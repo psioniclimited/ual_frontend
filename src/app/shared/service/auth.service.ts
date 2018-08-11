@@ -8,15 +8,10 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  private loggedIn = new BehaviorSubject<boolean>(false); // {1}
-  get isLoggedIn() {
-    return this.loggedIn.asObservable(); // {2}
-  }
-
   constructor(private http: HttpClient, private router: Router) {}
 
   login(creds) {
-    return this.http.post('http://localhost:8000/user/login', creds).pipe(
+    return this.http.post('http://ucnbilling.com/cable/authmob', creds).pipe(
       map(token => {
         // login successful if there's a jwt token in the response
         // @ts-ignore
@@ -24,7 +19,6 @@ export class AuthService {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
           // @ts-ignore
           localStorage.setItem('token', JSON.stringify(token.token));
-          this.loggedIn.next(true);
           this.router.navigate(['/auth/auth_user']);
         }
         return token;
@@ -35,7 +29,6 @@ export class AuthService {
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
-    this.loggedIn.next(false);
-    this.router.navigate(['/auth/signin']);
+    this.router.navigate(['/login']);
   }
 }

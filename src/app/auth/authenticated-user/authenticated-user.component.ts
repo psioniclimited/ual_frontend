@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthenticatedUserService} from '../service/authenticated-user.service';
-import {User} from '../../_model/user';
+import { AuthenticatedUserService } from '../service/authenticated-user.service';
+import { User } from '../../_model/user';
 
 @Component({
   selector: 'app-authenticated-user',
@@ -9,13 +9,12 @@ import {User} from '../../_model/user';
 })
 export class AuthenticatedUserComponent implements OnInit {
   private user: User;
-  constructor(private authenticatedUser: AuthenticatedUserService) { }
+  constructor(private authenticatedUser: AuthenticatedUserService) {}
 
   ngOnInit() {
-    this.authenticatedUser.getAuthenticatedUser().subscribe(user => {
-      // this.user = user.user;
-      // console.log(this.user.name);
-    });
+    // this.authenticatedUser.getAuthenticatedUser().subscribe(user => {
+    //   this.user = user.user;
+    //   console.log(this.user.name);
+    // });
   }
-
 }

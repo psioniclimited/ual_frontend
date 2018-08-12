@@ -14,6 +14,7 @@ import { HomeLayoutComponent } from './shared/home-layout/home-layout.component'
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DropdownDirective } from './shared/directives/dropdown.directive';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HeaderComponent,
     LoginLayoutComponent,
     HomeLayoutComponent,
-    SigninComponent
+    SigninComponent,
+    DropdownDirective
   ],
   imports: [
     BrowserModule,

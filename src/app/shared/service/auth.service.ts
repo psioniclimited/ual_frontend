@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { MessageService } from 'primeng/api';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(private http: HttpClient, private messageService: MessageService, private router: Router) {}
+  constructor(private http: HttpClient,  private router: Router) {}
 
   login(creds) {
     return this.http.post('http://localhost:8000/user/login', creds).pipe(

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from '../service/auth.service';
-import {first} from 'rxjs/operators';
-import {Router} from '@angular/router';
+import { AuthService } from '../service/auth.service';
+import { first } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -9,20 +9,20 @@ import {Router} from '@angular/router';
   styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent implements OnInit {
-
   public form = {
     email: 'banani@cable.com',
     password: 'qwerasdf'
   };
 
-  constructor(private router: Router, private authService: AuthService) { }
+  constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit() {
-    console.log("woking on it");
+    // console.log("woking on it");
   }
 
-  onSubmit( ) {
-    this.authService.login(this.form)
+  onSubmit() {
+    this.authService
+      .login(this.form)
       .pipe(first())
       .subscribe(
         data => {
@@ -30,7 +30,8 @@ export class SigninComponent implements OnInit {
         },
         error => {
           console.log(error);
-        });
+          // this.messageService.add({severity: 'error', summary: 'Service Message', detail: 'Via MessageService'});
+        }
+      );
   }
-
 }

@@ -1,0 +1,31 @@
+<p-card >
+  <form class="ui-fluid" [formGroup]="profileForm" (ngSubmit)="onSubmit()" >
+    <div class="ui-g form-group">
+      <div class="ui-md-5 ui-g-12">
+        <!--<label for="name">Name</label>-->
+        <input type="text" id="name" pInputText placeholder="Name" name="name" formControlName="name">
+        <small *ngIf="!profileForm.controls['name'].valid && profileForm.controls['name'].touched">
+          Name is required
+        </small>
+      </div>
+
+      <div class=" ui-md-5 ui-g-12">
+        <!--<label for="email">Email</label>-->
+        <input type="text" id="email" pInputText placeholder="Email" name="email" formControlName="email">
+      </div>
+
+      <div class="ui-md-5 ui-g-12">
+        <input type="text" pInputText placeholder="Password" name="password" formControlName="password">
+      </div>
+
+      <div class="ui-md-5 ui-g-12">
+        <input type="text" pInputText placeholder="Confirm Password">
+      </div>
+
+
+    </div>
+    <p-button label="Click" ></p-button>
+  </form>
+  <!--<button pButton type="button" label="Click"   [disabled]="!profileForm.valid"></button>-->
+</p-card>
+

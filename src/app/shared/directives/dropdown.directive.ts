@@ -1,13 +1,16 @@
-import { Directive, ElementRef, HostBinding, HostListener } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  HostBinding,
+  HostListener
+} from '@angular/core';
 
 @Directive({
   selector: '[appDropdown]'
 })
 export class DropdownDirective {
   private isOpen = false;
-  constructor(private _el: ElementRef) {
-    console.log(this._el);
-  }
+  constructor(private _el: ElementRef) {}
 
   @HostBinding('class.show')
   get opened() {
@@ -15,11 +18,13 @@ export class DropdownDirective {
   }
   @HostListener('click')
   open() {
-    console.log(this._el);
-    this.isOpen = true;
-    this._el.nativeElement
-      .querySelector('.dropdown-menu')
-      .classList.add('show');
+    this.isOpen = !this.isOpen;
+    const dropdownElement = this._el.nativeElement.querySelector(
+      '.dropdown-menu'
+    );
+    this.isOpen
+      ? dropdownElement.classList.add('show')
+      : dropdownElement.classList.remove('show');
   }
   @HostListener('document:click', ['$event.target'])
   close(targetElement) {

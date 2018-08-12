@@ -11,6 +11,9 @@ import { LoginLayoutComponent } from './shared/login-layout/login-layout.compone
 import { SigninComponent } from './shared/signin/signin.component';
 import { FormsModule } from '@angular/forms';
 import { HomeLayoutComponent } from './shared/home-layout/home-layout.component';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -20,8 +23,16 @@ import { HomeLayoutComponent } from './shared/home-layout/home-layout.component'
     HomeLayoutComponent,
     SigninComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ToastModule,
+    BrowserAnimationsModule
+  ],
   providers: [
+    MessageService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],

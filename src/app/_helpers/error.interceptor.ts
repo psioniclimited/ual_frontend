@@ -1,23 +1,43 @@
 import { Injectable } from '@angular/core';
-import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
+import {
+  HttpRequest,
+  HttpHandler,
+  HttpEvent,
+  HttpInterceptor
+} from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { AuthService } from '../shared/service/auth.service';
+import { MessageService } from 'primeng/api';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
-  constructor(private authenticationService: AuthService) {}
+  constructor(
+    private messageService: MessageService,
+    private authenticationService: AuthService
+  ) {}
 
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    return next.handle(request).pipe(catchError(err => {
-      if (err.status === 401) {
-        // auto logout if 401 response returned from api
-        this.authenticationService.logout();
-        location.reload(true);
-      }
+  intercept(
+    request: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<any>> {
+    return next.handle(request).pipe(
+      catchError(err => {
+        if (err.status === 401) {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Service Message',
+            detail: 'Via MessageService'
+          });
+          // console.log('in error');
+          // auto logout if 401 response returned from api
+          this.authenticationService.logout();
+          // location.reload(true);
+        }
 
-      const error = err.error.message || err.statusText;
-      return throwError(error);
-    }));
+        const error = err.error.message || err.statusText;
+        return throwError(error);
+      })
+    );
   }
 }

@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
-
+import { User } from '../../_model/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(private http: HttpClient,  private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   login(creds) {
     return this.http.post('http://localhost:8000/user/login', creds).pipe(
@@ -27,8 +27,11 @@ export class AuthService {
   }
 
   logout() {
-    // remove user from local storage to log user out
-    localStorage.removeItem('currentUser');
-    this.router.navigate(['/login']);
+    return this.http.post('http://localhost:8000/user/logout', null).pipe(
+      map(data => {
+        localStorage.removeItem('currentUser');
+        this.router.navigate(['/login']);
+      })
+    );
   }
 }

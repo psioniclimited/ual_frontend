@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { User } from '../../_model/user';
+import {environment} from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
 
   login(creds) {
-    return this.http.post('http://localhost:8000/user/login', creds).pipe(
+    return this.http.post('/user/login', creds).pipe(
       map(token => {
         // login successful if there's a jwt token in the response
         // @ts-ignore
@@ -27,7 +28,7 @@ export class AuthService {
   }
 
   logout() {
-    return this.http.post('http://localhost:8000/user/logout', null).pipe(
+    return this.http.post('/user/logout', null).pipe(
       map(data => {
         localStorage.removeItem('currentUser');
         this.router.navigate(['/login']);

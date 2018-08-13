@@ -15,6 +15,7 @@ import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DropdownDirective } from './shared/directives/dropdown.directive';
+import {ApiUrlInterceptor} from './_helpers/api-url-interceptor';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { DropdownDirective } from './shared/directives/dropdown.directive';
   providers: [
     MessageService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ApiUrlInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

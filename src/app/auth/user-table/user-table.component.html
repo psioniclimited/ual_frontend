@@ -5,6 +5,7 @@
   (onLazyLoad)="loadUsersLazy($event)"
   [paginator]="true"
   [rows]="10"
+  [rowsPerPageOptions]="[10,20,30]"
   [totalRecords]="totalRecords"
   [loading]="loading">
   <ng-template pTemplate="header" let-columns>

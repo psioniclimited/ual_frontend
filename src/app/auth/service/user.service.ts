@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from '../../_model/user';
-import { HttpClient } from '@angular/common/http';
-import {map} from 'rxjs/operators';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Paginate} from '../../_model/paginate';
 
 @Injectable({
@@ -9,8 +7,12 @@ import {Paginate} from '../../_model/paginate';
 })
 export class UserService {
   constructor(private http: HttpClient) {}
-  users() {
-    return this.http.get<Paginate>('/user');
+  users(event) {
+    // @ts-ignore
+    const params = new HttpParams()
+      .set('page', (event.first / event.rows) + 1);
+      // .set('sort', SortOn);
+    return this.http.get<Paginate>('/user', {params: params});
   }
   store() {}
   delete() {}

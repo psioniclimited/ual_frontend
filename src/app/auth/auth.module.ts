@@ -13,6 +13,8 @@ import { ButtonModule } from 'primeng/button';
 // Components
 import { AuthenticatedUserComponent } from './authenticated-user/authenticated-user.component';
 import { UserFormComponent } from './user-form/user-form.component';
+import { UserTableComponent } from './user-table/user-table.component';
+import {TableModule} from 'primeng/table';
 
 @NgModule({
   imports: [
@@ -23,7 +25,8 @@ import { UserFormComponent } from './user-form/user-form.component';
     CardModule,
     InputTextModule,
     ButtonModule,
+    TableModule
   ],
-  declarations: [AuthenticatedUserComponent, UserFormComponent]
+  declarations: [AuthenticatedUserComponent, UserFormComponent, UserTableComponent]
 })
 export class AuthModule {}

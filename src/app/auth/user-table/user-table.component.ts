@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../_model/user';
 import { UserService } from '../service/user.service';
 import { Paginate } from '../../_model/paginate';
-import { LazyLoadEvent } from 'primeng/api';
+import { LazyLoadEvent, SortEvent } from 'primeng/api';
 
 @Component({
   selector: 'app-user-table',

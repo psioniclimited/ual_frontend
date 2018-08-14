@@ -12,6 +12,13 @@ export class UserService {
     let params = new HttpParams()
       .set('page', String(event.first / event.rows + 1))
       .set('per_page', event.rows);
+      // .set('global', event.filters.global);
+    event.filters.global
+      ? (params = params.set(
+      'global',
+      event.filters.global.value
+      ))
+      : (params = params);
     event.sortField
       ? (params = params.set(
           'sort_by',

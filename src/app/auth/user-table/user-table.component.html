@@ -20,15 +20,19 @@
 
   <ng-template pTemplate="header" let-columns>
     <tr>
-      <th *ngFor="let col of columns" [pSortableColumn]="col.field" [ngSwitch]="col.field">
+      <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+        {{col.header}}
+        <p-sortIcon [field]="col.field"></p-sortIcon>
+      </th>
+    </tr>
+    <tr>
+      <th *ngFor="let col of columns" [ngSwitch]="col.field">
         <input *ngSwitchCase="'id'" pInputText type="text"
                (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
         <input *ngSwitchCase="'name'" pInputText type="text"
                (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
         <input *ngSwitchCase="'email'" pInputText type="text"
                (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
-        {{col.header}}
-        <p-sortIcon [field]="col.field"></p-sortIcon>
       </th>
     </tr>
   </ng-template>

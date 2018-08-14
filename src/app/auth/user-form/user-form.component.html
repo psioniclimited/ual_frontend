@@ -1,30 +1,38 @@
 <p-card >
-  <form class="ui-fluid" [formGroup]="profileForm" (ngSubmit)="onSubmit()" >
-    <div class="ui-g form-group">
-      <div class="ui-md-5 ui-g-12">
-        <!--<label for="name">Name</label>-->
-        <input type="text" id="name" pInputText placeholder="Name" name="name" formControlName="name">
+  <form class="container ui-fluid" [formGroup]="profileForm" (ngSubmit)="onSubmit()" >
+    <label for="name">Base Form</label>
+    <hr>
+    <div class="ui-g form-group ">
+      <div class="ui-md-6 ui-g-12 ">
+        <label for="name">Name</label>
+        <input type="text" id="name" class="form-control" pInputText placeholder="Enter Name" name="name" formControlName="name">
         <small *ngIf="!profileForm.controls['name'].valid && profileForm.controls['name'].touched">
           Name is required
         </small>
       </div>
 
-      <div class=" ui-md-5 ui-g-12">
-        <!--<label for="email">Email</label>-->
-        <input type="text" id="email" pInputText placeholder="Email" name="email" formControlName="email">
+      <div class=" ui-md-6 ui-g-12">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" class="form-control" pInputText placeholder="Enter Email" name="email" formControlName="email">
       </div>
 
-      <div class="ui-md-5 ui-g-12">
-        <input type="text" pInputText placeholder="Password" name="password" formControlName="password">
+      <div class="ui-md-6 ui-g-12">
+        <label for="email">Password</label>
+        <input type="password" class="form-control" pInputText placeholder="Password" name="password" formControlName="password">
       </div>
 
-      <div class="ui-md-5 ui-g-12">
-        <input type="text" pInputText placeholder="Confirm Password">
+      <div class="ui-md-6 ui-g-12">
+        <label for="email">Confirm Password</label>
+        <input type="password" class="form-control" pInputText placeholder="Confirm Password">
       </div>
-
-
+      <p-button label="Submit" class="colored" styleClass="colored"></p-button>
+      <button class=" colored" name="basic" pButton type="button" label="ClickMe"></button>
+      <!--<button pButton type="button" label="Submit" ></button>-->
+      <!--<button pButton type="button" label="Cancel"  ></button>-->
     </div>
-    <p-button label="Click" ></p-button>
+
+
+
   </form>
   <!--<button pButton type="button" label="Click"   [disabled]="!profileForm.valid"></button>-->
 </p-card>

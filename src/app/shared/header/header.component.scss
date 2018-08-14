@@ -15,7 +15,7 @@
   top: 0;
   left: 0;
   z-index: 1000;
-  height: 116px;
+  height: 113px;
   width: 100%;
   text-align: center;
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
@@ -33,7 +33,7 @@
   background-image: -moz-linear-gradient(left, #1e469a, #49a7c1);
   background-image: -ms-linear-gradient(left, #1e469a, #49a7c1);
   background-image: -o-linear-gradient(left, #1e469a, #49a7c1);
-  background-image: linear-gradient(left, #1e469a, #49a7c1);
+  background-image: linear-gradient(to right, #1e469a, #49a7c1);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1e469a', endColorstr='#49a7c1', gradientType='1');
 }
 

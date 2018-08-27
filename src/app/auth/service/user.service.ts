@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Paginate } from '../../_model/paginate';
+import {User} from '../../_model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,9 @@ export class UserService {
       : (params = params);
     return this.http.get<Paginate>('/user', { params: params });
   }
-  store() {}
+  store( user: User) {
+    console.log('IN service');
+    return this.http.post('/user', user);
+  }
   delete() {}
 }

@@ -4,6 +4,7 @@ import { AuthenticatedUserComponent } from './authenticated-user/authenticated-u
 import { AuthGuard } from '../_guard/auth.guard';
 import { UserFormComponent } from './user-form/user-form.component';
 import {UserTableComponent} from './user-table/user-table.component';
+import { PermissionComponent } from './permission/permission.component';
 
 const routes: Routes = [
   {
@@ -19,7 +20,11 @@ const routes: Routes = [
   {
     path: 'users',
     component: UserTableComponent,
-  }
+  },
+  {
+    path: 'permissions',
+    component: PermissionComponent,
+  },
 ];
 
 @NgModule({

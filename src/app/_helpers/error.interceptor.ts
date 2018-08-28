@@ -34,6 +34,19 @@ export class ErrorInterceptor implements HttpInterceptor {
           this.authenticationService.logout();
           // location.reload(true);
         }
+        if (err.status === 422) {
+          let details = '';
+          const errors = err.error;
+          for (const er in errors['errors']) {
+            console.log(errors['errors'][er]);
+            details += errors['errors'][er][0] + ' ';
+          }
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Validation Errors',
+            detail: details
+          });
+        }
 
         const error = err.error.message || err.statusText;
         return throwError(error);

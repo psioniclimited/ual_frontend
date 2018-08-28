@@ -10,7 +10,7 @@ export class AuthenticatedUserService {
 
   constructor(private http: HttpClient) { }
 
-  getAuthenticatedUser(): Observable<User> {
-    return this.http.get<User>('http://localhost:8000/user/get_auth_user');
+  getAuthenticatedUser(): Observable<any> {
+    return this.http.get<any>('http://localhost:8000/user/get_auth_user');
   }
 }

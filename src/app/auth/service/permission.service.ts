@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
+import { Permission } from '../../_model/permission';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Paginate } from '../../_model/paginate';
-import {User} from '../../_model/user';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class PermissionService {
   constructor(private http: HttpClient) {}
-  users(event) {
+  permissions(event) {
     // @ts-ignore
     let params = new HttpParams()
       .set('page', String(event.first / event.rows + 1))
       .set('per_page', event.rows);
-      // .set('global', event.filters.global);
+    // .set('global', event.filters.global);
     event.filters.global
       ? (params = params.set(
       'global',
@@ -22,15 +22,14 @@ export class UserService {
       : (params = params);
     event.sortField
       ? (params = params.set(
-          'sort_by',
-          event.sortField + '.' + event.sortOrder
-        ))
+      'sort_by',
+      event.sortField + '.' + event.sortOrder
+      ))
       : (params = params);
-    return this.http.get<Paginate>('/user', { params: params });
+    return this.http.get<Paginate>('/user/permission', { params: params });
   }
-  store( user: User) {
-    console.log('IN service');
-    return this.http.post('/user', user);
+  store(permission: Permission) {
+    console.log(permission);
+    return this.http.post('/user/permission/create', permission);
   }
-  delete() {}
 }

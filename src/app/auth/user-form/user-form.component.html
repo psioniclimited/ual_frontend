@@ -1,34 +1,51 @@
 <p-card >
-  <form class="container ui-fluid" [formGroup]="profileForm" (ngSubmit)="onSubmit()" >
+  <form class="container ui-fluid" [formGroup]="userForm" (ngSubmit)="onSubmit()" >
     <label for="name">Base Form</label>
     <hr>
     <div class="ui-g form-group ">
       <div class="ui-md-6 ui-g-12 ">
         <label for="name">Name</label>
-        <input type="text" id="name" class="form-control" pInputText placeholder="Enter name" name="name" formControlName="name">
-        <small *ngIf="!profileForm.controls['name'].valid && profileForm.controls['name'].touched">
+        <input type="text" id="name" class="form-control"
+               pInputText placeholder="Enter name"
+               name="name" formControlName="name">
+        <small *ngIf="!userForm.controls['name'].valid && userForm.controls['name'].touched">
           Name is required
         </small>
       </div>
 
       <div class=" ui-md-6 ui-g-12">
         <label for="email">Email Address</label>
-        <input type="email" id="email" class="form-control" pInputText placeholder="Enter email" name="email" formControlName="email">
+        <input type="email" id="email"
+               class="form-control"
+               pInputText placeholder="Enter email"
+               name="email" formControlName="email">
+        <small *ngIf="!userForm.controls['email'].valid && userForm.controls['email'].touched">
+          Email is required
+        </small>
       </div>
 
       <div class="ui-md-6 ui-g-12">
         <label for="email">Password</label>
-        <input type="password" class="form-control" pInputText placeholder="Password" name="password" formControlName="password">
+        <input type="password"
+               class="form-control"
+               pInputText placeholder="Password"
+               name="password" formControlName="password">
+        <small *ngIf="!userForm.controls['password'].valid && userForm.controls['password'].touched">
+          Password is required
+        </small>
       </div>
 
       <!--<div style="width:800px; margin:0 auto;">-->
 
       <div class="ui-md-6 ui-g-12">
         <label for="email">Confirm Password</label>
-        <input type="password" class="form-control" pInputText placeholder="Confirm password">
+        <input type="password"
+               class="form-control"
+               pInputText formControlName="password_confirmation"
+               placeholder="Confirm password">
       </div>
       <!--<p-button label="Submit" class="colored" styleClass="colored"></p-button>-->
-      <button class="submit-color" name="basic" pButton type="button" label="Submit"></button>
+      <button class="submit-color" name="basic" pButton type="submit"  label="Submit"></button>
       <button class="cancel-color" name="basic" pButton type="button" label="Cancel"></button>
 
       <!--<button pButton type="button" label="Submit" ></button>-->
@@ -38,6 +55,6 @@
 
 
   </form>
-  <!--<button pButton type="button" label="Click"   [disabled]="!profileForm.valid"></button>-->
+  <!--<button pButton type="button" label="Click"   [disabled]="!userForm.valid"></button>-->
 </p-card>
 

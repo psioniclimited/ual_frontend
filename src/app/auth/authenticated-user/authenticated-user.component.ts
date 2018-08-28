@@ -13,6 +13,7 @@ export class AuthenticatedUserComponent implements OnInit {
 
   ngOnInit() {
     // this.authenticatedUser.getAuthenticatedUser().subscribe(user => {
+    //   console.log(user);
     //   this.user = user.user;
     //   console.log(this.user.name);
     // });

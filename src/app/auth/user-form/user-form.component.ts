@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PasswordValidator } from './password.validator';
-import {User} from '../../_model/user';
-import {UserService} from '../service/user.service';
+import { User } from '../../_model/user';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-user-form',
@@ -45,9 +45,8 @@ export class UserFormComponent implements OnInit {
       this.userForm.value['password'],
       this.userForm.value['password_confirmation']
     );
-    this.userService.store(user).subscribe(
-      (response) => console.log(),
-      (error) => console.log()
-    );
+    this.userService
+      .store(user)
+      .subscribe(response => console.log(), error => console.log());
   }
 }

@@ -9,12 +9,15 @@ import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 
-
 // Components
 import { AuthenticatedUserComponent } from './authenticated-user/authenticated-user.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { UserTableComponent } from './user-table/user-table.component';
-import {TableModule} from 'primeng/table';
+import { TableModule } from 'primeng/table';
+import { PermissionComponent } from './permission/permission.component';
+import { PermissionFormComponent } from './permission/permission-form/permission-form.component';
+import { PermissionTableComponent } from './permission/permission-table/permission-table.component';
+import { DropdownModule } from 'primeng/primeng';
 
 @NgModule({
   imports: [
@@ -25,8 +28,16 @@ import {TableModule} from 'primeng/table';
     CardModule,
     InputTextModule,
     ButtonModule,
-    TableModule
+    TableModule,
+    DropdownModule
   ],
-  declarations: [AuthenticatedUserComponent, UserFormComponent, UserTableComponent]
+  declarations: [
+    AuthenticatedUserComponent,
+    UserFormComponent,
+    UserTableComponent,
+    PermissionComponent,
+    PermissionFormComponent,
+    PermissionTableComponent
+  ]
 })
 export class AuthModule {}

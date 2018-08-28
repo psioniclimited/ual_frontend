@@ -23,7 +23,8 @@ const routes: Routes = [
     path: '',
     component: HomeLayoutComponent,
     children: [
-      { path: 'auth', loadChildren: '../app/auth/auth.module#AuthModule' }
+      { path: 'auth', loadChildren: '../app/auth/auth.module#AuthModule' },
+      { path: 'sampling', loadChildren: '../app/sampling/sampling.module#SamplingModule' },
     ]
   }
 ];

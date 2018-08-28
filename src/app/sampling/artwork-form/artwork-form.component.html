@@ -1,0 +1,93 @@
+<p-card>
+  <form class="container ui-fluid" [formGroup]="artworkForm">
+    <label>CREATE NEW ARTWORK SHEET</label>
+    <hr>
+    <div class="ui-g form-group ">
+      <div class="ui-md-6 ui-g-12 ">
+        <label for="reference_num">Reference No</label>
+        <input type="text" id="reference_num" class="form-control"
+               pInputText placeholder="Enter Reference"
+               name="reference_num" formControlName="reference_num">
+      </div>
+
+      <div class=" ui-md-6 ui-g-12">
+        <label for="client_name">Client Name</label>
+        <input type="text" id="client_name"
+               class="form-control"
+               pInputText placeholder="Enter Client Name"
+               name="client_name" formControlName="client_name">
+      </div>
+
+      <div class="ui-md-6 ui-g-12">
+        <label for="division">Division</label>
+        <p-dropdown [options]="cities"
+                    placeholder="Select a City"
+                    optionLabel="name"
+                    id="division"
+                    name="division"
+                    [showClear]="true"
+                    [style]="{'width':'100%'}"
+                    formControlName="selectedCity"></p-dropdown>
+      </div>
+
+      <div class="ui-md-6 ui-g-12">
+        <label for="date_received">Date Received</label>
+        <p-calendar [monthNavigator]="true"
+                    [yearNavigator]="true"
+                    yearRange="2000:2030"
+                    dateFormat="dd-mm-yy"
+                    id="date_received"
+                    name="date_received"
+                    formControlName="date"></p-calendar>
+      </div>
+
+      <div class="ui-md-6 ui-g-12">
+        <label for="description">Description</label>
+        <textarea pInputTextarea
+                  id="description"
+                  name="description"
+                  formControlName="description"></textarea>
+      </div>
+
+      <p-table [value]="cars">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Position</th>
+            <th
+              *ngFor="let artworkDetail of artworkDetails[0].combos | keyvalue">
+              {{artworkDetail.key}}
+            </th>
+            <th><p-button label="Click" (onClick)="addCombo($event)"></p-button></th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData>
+          <tr *ngFor="let artworkDetail of artworkDetails">
+            <td pEditableColumn>
+              <p-cellEditor>
+                <ng-template pTemplate="input">
+                  <input type="text" [(ngModel)]="rowData.position">
+                </ng-template>
+                <ng-template pTemplate="output">
+                  {{artworkDetail.position}}
+                </ng-template>
+              </p-cellEditor>
+            </td>
+            <td pEditableColumn *ngFor="let combo of artworkDetail.combos | keyvalue">
+              <p-cellEditor>
+                <ng-template pTemplate="input">
+                  <input pInputText type="text" [(ngModel)]="rowData.position" required>
+                </ng-template>
+                <ng-template pTemplate="output">
+                  {{combo.value}}
+                </ng-template>
+              </p-cellEditor>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+
+      <button class="submit-color" name="basic" pButton type="submit" label="Submit"></button>
+    </div>
+  </form>
+</p-card>
+

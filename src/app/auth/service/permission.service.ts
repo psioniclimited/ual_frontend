@@ -2,11 +2,14 @@ import { Injectable } from '@angular/core';
 import { Permission } from '../../_model/permission';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Paginate } from '../../_model/paginate';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class PermissionService {
+  id = new Subject<number>();
   constructor(private http: HttpClient) {}
   permissions(event) {
     // @ts-ignore
@@ -32,4 +35,10 @@ export class PermissionService {
     console.log(permission);
     return this.http.post('/user/permission/create', permission);
   }
+
+  editService(id) {
+    console.log("working on it" +id);
+    this.id.next(id);
+  }
+
 }

@@ -5,6 +5,7 @@ import { AuthGuard } from '../_guard/auth.guard';
 import { UserFormComponent } from './user-form/user-form.component';
 import {UserTableComponent} from './user-table/user-table.component';
 import { PermissionComponent } from './permission/permission.component';
+import { PermissionFormComponent } from './permission/permission-form/permission-form.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,7 @@ const routes: Routes = [
     path: 'permissions',
     component: PermissionComponent,
   },
+
 ];
 
 @NgModule({

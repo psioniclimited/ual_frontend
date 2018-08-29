@@ -1,20 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PasswordValidator } from '../../user-form/password.validator';
 import { Permission } from '../../../_model/permission';
 import { PermissionService } from '../../service/permission.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-permission-form',
   templateUrl: './permission-form.component.html',
   styleUrls: ['./permission-form.component.scss']
 })
-export class PermissionFormComponent implements OnInit {
+export class PermissionFormComponent implements OnInit, OnDestroy {
   permissionForm: FormGroup;
+  editPermission: Permission;
+  id: number;
+  private  subscrption: Subscription;
 
-  constructor(private permissionService: PermissionService) {}
+  constructor(private permissionService: PermissionService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
+    this.subscrption = this.permissionService.id.subscribe((id: number) => {
+      this.id = id;
+    });
+    console.log('new id' + this.id);
     this.permissionForm = new FormGroup(
       {
         name: new FormControl(null, [
@@ -29,7 +38,7 @@ export class PermissionFormComponent implements OnInit {
       }
     );
   }
-
+  //change the id at the later date
   onSubmit() {
     const permission = new Permission(
       this.permissionForm.value['name'],
@@ -40,5 +49,9 @@ export class PermissionFormComponent implements OnInit {
     this.permissionService
       .store(permission)
       .subscribe(response => console.log(), error => console.log());
+  }
+
+  ngOnDestroy() {
+    this.subscrption.unsubscribe();
   }
 }

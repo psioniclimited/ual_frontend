@@ -18,6 +18,7 @@ import { PermissionComponent } from './permission/permission.component';
 import { PermissionFormComponent } from './permission/permission-form/permission-form.component';
 import { PermissionTableComponent } from './permission/permission-table/permission-table.component';
 import { DropdownModule } from 'primeng/primeng';
+import { PermissionStartComponent } from './permission/permission-start/permission-start.component';
 
 @NgModule({
   imports: [
@@ -37,7 +38,8 @@ import { DropdownModule } from 'primeng/primeng';
     UserTableComponent,
     PermissionComponent,
     PermissionFormComponent,
-    PermissionTableComponent
+    PermissionTableComponent,
+    PermissionStartComponent
   ]
 })
 export class AuthModule {}

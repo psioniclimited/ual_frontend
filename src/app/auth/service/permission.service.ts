@@ -7,7 +7,6 @@ import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-
 export class PermissionService {
   id = new Subject<number>();
   constructor(private http: HttpClient) {}
@@ -18,16 +17,13 @@ export class PermissionService {
       .set('per_page', event.rows);
     // .set('global', event.filters.global);
     event.filters.global
-      ? (params = params.set(
-      'global',
-      event.filters.global.value
-      ))
+      ? (params = params.set('global', event.filters.global.value))
       : (params = params);
     event.sortField
       ? (params = params.set(
-      'sort_by',
-      event.sortField + '.' + event.sortOrder
-      ))
+          'sort_by',
+          event.sortField + '.' + event.sortOrder
+        ))
       : (params = params);
     return this.http.get<Paginate>('/user/permission', { params: params });
   }
@@ -36,9 +32,9 @@ export class PermissionService {
     return this.http.post('/user/permission/create', permission);
   }
 
-  editService(id) {
-    console.log("working on it" +id);
-    this.id.next(id);
+  //display the specific permission details
+  show(id: number) {
+    const params = new HttpParams().set('id', id + '');
+    return this.http.get('/user/permission/show');
   }
-
 }

@@ -27,18 +27,16 @@ export class ArtworkFormComponent implements OnInit {
     this.cars = [{ position: 'Hello', ComboA: 'hello' }];
     this.artworkDetails = [
       {
-        position: 'A',
-        combos: {
-          'Combo A': 'red',
-          'Combo B': 'blue'
-        }
+        'position': 'A',
+        'Combo A': 'red',
+        'Combo B': 'blue',
+        'Combo C': 'white'
       },
       {
-        position: 'B-Felt',
-        combos: {
-          'Combo A': 'green',
-          'Combo B': 'gold'
-        }
+        'position': 'B-Felt',
+        'Combo A': 'red',
+        'Combo B': 'blue',
+        'Combo C': 'white'
       }
     ];
   }
@@ -55,11 +53,16 @@ export class ArtworkFormComponent implements OnInit {
   }
 
   addCombo() {
+    console.log(this.artworkDetails);
     this.artworkDetails.forEach(function(artworkDetail) {
       const combo_name =
         'Combo ' +
         String.fromCharCode(65 + Object.keys(artworkDetail.combos).length);
       artworkDetail.combos[combo_name] = '';
     });
+  }
+
+  editComplete(event) {
+    console.log(event);
   }
 }

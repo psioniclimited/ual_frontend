@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PasswordValidator } from '../../user-form/password.validator';
 import { Permission } from '../../../_model/permission';
 import { PermissionService } from '../../service/permission.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -15,15 +15,31 @@ export class PermissionFormComponent implements OnInit, OnDestroy {
   permissionForm: FormGroup;
   editPermission: Permission;
   id: number;
-  private  subscrption: Subscription;
+  editMode = false;
 
-  constructor(private permissionService: PermissionService, private route: ActivatedRoute, private router: Router) {}
+  constructor(
+    private permissionService: PermissionService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    this.subscrption = this.permissionService.id.subscribe((id: number) => {
-      this.id = id;
+    this.route.params.subscribe((params: Params) => {
+      this.id = +params['id'];
+      this.editMode = params['id'] != null;
     });
-    console.log('new id' + this.id);
+
+    if (this.editMode) {
+      this.permissionService.show(this.id).subscribe(
+        data => {
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
+
     this.permissionForm = new FormGroup(
       {
         name: new FormControl(null, [
@@ -51,7 +67,5 @@ export class PermissionFormComponent implements OnInit, OnDestroy {
       .subscribe(response => console.log(), error => console.log());
   }
 
-  ngOnDestroy() {
-    this.subscrption.unsubscribe();
-  }
+  ngOnDestroy() {}
 }

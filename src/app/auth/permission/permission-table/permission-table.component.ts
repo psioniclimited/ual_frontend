@@ -41,7 +41,6 @@ export class PermissionTableComponent implements OnInit {
   }
 
   editPermission(id: number) {
-    console.log(id);
-    this.permissionService.editService(id);
+    this.router.navigate(['../permissions/', id , 'edit'], {relativeTo: this.route});
   }
 }

@@ -25,12 +25,16 @@
         {{col.header}}
         <p-sortIcon [field]="col.field"></p-sortIcon>
       </th>
+      <th>Action</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-rowData let-columns="columns">
     <tr>
-      <td *ngFor="let col of columns">
+      <td *ngFor="let col of columns" >
         {{rowData[col.field]}}
+      </td>
+      <td>
+        <button class="submit-color" name="basic" pButton type="button" (click)="editPermission(rowData['id'])" label="Edit"></button>
       </td>
     </tr>
   </ng-template>

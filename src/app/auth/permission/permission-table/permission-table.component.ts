@@ -3,6 +3,7 @@ import { UserService } from '../../service/user.service';
 import { Paginate } from '../../../_model/paginate';
 import { LazyLoadEvent } from 'primeng/api';
 import { PermissionService } from '../../service/permission.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-permission-table',
@@ -18,14 +19,14 @@ export class PermissionTableComponent implements OnInit {
 
   loading: boolean;
 
-  constructor(private permissionService: PermissionService) {}
+  constructor(private permissionService: PermissionService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
     this.cols = [
       { field: 'name', header: 'Name' },
       { field: 'display_name', header: 'Display Name' },
-      { field: 'description', header: 'Description' },
-      { field: 'action', header: 'Actions' }
+      { field: 'description', header: 'Description' }
+      // { field: 'action', header: 'Actions' }
     ];
 
     this.loading = true;
@@ -37,5 +38,9 @@ export class PermissionTableComponent implements OnInit {
       this.permissions = permissions.data;
       this.loading = false;
     });
+  }
+
+  editPermission(id: number) {
+    this.router.navigate(['../permissions/', id , 'edit'], {relativeTo: this.route});
   }
 }

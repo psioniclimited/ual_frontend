@@ -14,6 +14,9 @@ import { Subscription } from 'rxjs';
 export class PermissionFormComponent implements OnInit, OnDestroy {
   permissionForm: FormGroup;
   editPermission: Permission;
+  old_name: '';
+  old_displayName: '';
+  old_description: '';
   id: number;
   editMode = false;
 
@@ -33,25 +36,35 @@ export class PermissionFormComponent implements OnInit, OnDestroy {
       this.permissionService.show(this.id).subscribe(
         data => {
           const permission_data = JSON.parse(JSON.stringify(data)) ;
-          console.log(permission_data[0].name);
+          this.old_name = permission_data[0].name;
+          this.old_displayName = permission_data[0].display_name;
+          this.old_description = permission_data[0].description;
         },
         error => {
           console.log(error);
         }
       );
     }
+    this.formInit();
+  }
 
+  private formInit() {
+    let name: '';
+    let display_name: '';
+    let description: '';
+    if (this.editMode) {
+      name = this.old_name;
+      display_name = this.old_displayName;
+      description = this.old_description;
+    }
     this.permissionForm = new FormGroup(
       {
-        name: new FormControl(null, [
+        name: new FormControl(name, [
           Validators.required,
           Validators.minLength(3)
         ]),
-        display_name: new FormControl(null, [Validators.required]),
-        description: new FormControl(null, [Validators.required])
-      },
-      (formGroup: FormGroup) => {
-        return PasswordValidator.areEqual(formGroup);
+        display_name: new FormControl(display_name, [Validators.required]),
+        description: new FormControl(description, [Validators.required])
       }
     );
   }
@@ -62,7 +75,6 @@ export class PermissionFormComponent implements OnInit, OnDestroy {
       this.permissionForm.value['display_name'],
       this.permissionForm.value['description']
     );
-    console.log(permission);
     this.permissionService
       .store(permission)
       .subscribe(response => console.log(), error => console.log());

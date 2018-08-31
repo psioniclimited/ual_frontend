@@ -3,6 +3,7 @@ import { Permission } from '../../_model/permission';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Paginate } from '../../_model/paginate';
 import { Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'

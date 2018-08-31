@@ -32,7 +32,8 @@ export class PermissionFormComponent implements OnInit, OnDestroy {
     if (this.editMode) {
       this.permissionService.show(this.id).subscribe(
         data => {
-          console.log(data);
+          const permission_data = JSON.parse(JSON.stringify(data)) ;
+          console.log(permission_data[0].name);
         },
         error => {
           console.log(error);

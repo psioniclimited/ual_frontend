@@ -35,6 +35,6 @@ export class PermissionService {
   //display the specific permission details
   show(id: number) {
     const params = new HttpParams().set('id', id + '');
-    return this.http.get('/user/permission/show');
+    return this.http.get('/user/permission/show', {params: params});
   }
 }

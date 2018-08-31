@@ -9,6 +9,7 @@ import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
 import {CalendarModule, DropdownModule, InputTextareaModule} from 'primeng/primeng';
 import {TableModule} from 'primeng/table';
+import {TableWorkComponent} from './table-work/table-work.component';
 
 @NgModule({
   imports: [
@@ -25,6 +26,6 @@ import {TableModule} from 'primeng/table';
     TableModule,
     ButtonModule
   ],
-  declarations: [ArtworkFormComponent]
+  declarations: [ArtworkFormComponent, TableWorkComponent]
 })
 export class SamplingModule { }

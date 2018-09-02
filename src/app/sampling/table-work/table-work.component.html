@@ -9,6 +9,9 @@
         <th *ngFor="let col of columns" [pSortableColumn]="col.field">
           {{col.header}}
         </th>
+        <th>
+          <p-button label="Add Column" (onClick)="addColumn($event)"></p-button>
+        </th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-rowData let-columns="columns">

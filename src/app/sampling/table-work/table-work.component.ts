@@ -40,9 +40,15 @@ export class TableWorkComponent implements OnInit {
   addPosition(event) {
     this.artworkDetails.push({
       position: 'New Position',
-      combo_a: ' ',
-      combo_b: ' ',
-      combo_c: ' '
+      combo_a: 'New Combo ?',
+      combo_b: 'New Combo ?',
+      combo_c: 'New Combo ?'
+    });
+  }
+
+  addColumn($event) {
+    this.cols.push({
+     field: 'combo_d', header: 'Combo D'
     });
   }
 

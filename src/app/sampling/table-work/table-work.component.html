@@ -10,11 +10,11 @@
           {{col.header}}
         </th>
         <th>
-          <p-button label="Add Column" (onClick)="addColumn($event)"></p-button>
+          Delete
         </th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-rowData let-columns="columns">
+    <ng-template pTemplate="body" let-rowData let-columns="columns" let-rowIndex="rowIndex">
       <tr>
         <td pEditableColumn *ngFor="let col of columns">
           <p-cellEditor>
@@ -25,6 +25,9 @@
               {{rowData[col.field]}}
             </ng-template>
           </p-cellEditor>
+        </td>
+        <td>
+          <button class="submit-color" name="basic" pButton type="button" (click)="onDelete(rowIndex)"  label="Delete"></button>
         </td>
       </tr>
     </ng-template>

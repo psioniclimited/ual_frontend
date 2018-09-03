@@ -9,7 +9,7 @@
         <label for="name">Name</label>
         <input type="text" id="name" class="form-control"
                pInputText placeholder="Enter name"
-               name="name" formControlName="name" [(ngModel)]="old_name">
+               name="name" formControlName="name" [(ngModel)]="editPermission.name">
         <small *ngIf="!permissionForm.controls['name'].valid && permissionForm.controls['name'].touched">
           Name is required
         </small>
@@ -21,7 +21,7 @@
         <input type="display_name" id="display_name"
                class="form-control"
                pInputText placeholder="Enter Display Name"
-               name="display_name" formControlName="display_name" [(ngModel)]="old_displayName">
+               name="display_name" formControlName="display_name" [(ngModel)]="editPermission.display_name">
         <small *ngIf="!permissionForm.controls['display_name'].valid && permissionForm.controls['display_name'].touched">
           Display Name is required
         </small>
@@ -30,7 +30,7 @@
       <div class="ui-g-12 ui-md-12 ui-lg-12">
         <label for="description">Description</label>
         <textarea [rows]="5" [cols]="30" pInputTextarea autoResize="autoResize" placeholder="Enter Description" formControlName="description"
-                  [(ngModel)]="old_description"></textarea>
+                  [(ngModel)]="editPermission.description"></textarea>
         <small *ngIf="!permissionForm.controls['description'].valid && permissionForm.controls['description'].touched">
           Description is required
         </small>

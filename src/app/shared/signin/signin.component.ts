@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class SigninComponent implements OnInit {
   public form = {
-    email: 'banani@cable.com',
+    email: 'riger400@gmail.com',
     password: 'qwerasdf'
   };
 

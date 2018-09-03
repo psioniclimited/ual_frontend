@@ -1,15 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {ArtworkFormComponent} from './artwork-form/artwork-form.component';
-import { TableWorkComponent } from './table-work/table-work.component';
+import { ArtworkFormComponent } from './artwork-form/artwork-form.component';
 
 const routes: Routes = [
-  { path: 'artwork', component: ArtworkFormComponent },
-  {path: 'tablework', component: TableWorkComponent}
+  { path: 'artwork/create', component: ArtworkFormComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class SamplingRoutingModule { }
+export class SamplingRoutingModule {}

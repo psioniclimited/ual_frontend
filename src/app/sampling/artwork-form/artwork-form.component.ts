@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Artwork } from '../../_model/artwork';
 
 @Component({
   selector: 'app-artwork-form',
@@ -7,36 +8,52 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./artwork-form.component.scss']
 })
 export class ArtworkFormComponent implements OnInit {
-  cities: any[];
-  cars: any[];
+  division: any[];
   selectedCity: any;
   date: Date;
-
+  cols: any[];
   artworkForm: FormGroup;
   artworkDetailForm: FormGroup;
   artworkDetails: any[];
 
   constructor() {
-    this.cities = [
-      { name: 'New York', code: 'NY' },
-      { name: 'Rome', code: 'RM' },
-      { name: 'London', code: 'LDN' },
-      { name: 'Istanbul', code: 'IST' },
-      { name: 'Paris', code: 'PRS' }
+    this.division = [
+      { name: 'Men', code: 'NY' },
+      { name: 'Women', code: 'RM' },
+      { name: 'Children', code: 'LDN' }
     ];
-    this.cars = [{ position: 'Hello', ComboA: 'hello' }];
+    this.cols = [
+      { field: 'position', header: 'Position' },
+      { field: 'combo_a', header: 'Combo A' },
+      { field: 'combo_b', header: 'Combo B' },
+      { field: 'combo_c', header: 'Combo C' },
+      { field: 'combo_d', header: 'Combo D' },
+      { field: 'combo_e', header: 'Combo E' }
+    ];
     this.artworkDetails = [
       {
-        'position': 'A',
-        'Combo A': 'red',
-        'Combo B': 'blue',
-        'Combo C': 'white'
+        position: 'A',
+        combo_a: 'blue',
+        combo_b: 'yellow',
+        combo_c: 'red',
+        combo_d: 'white',
+        combo_e: 'black'
       },
       {
-        'position': 'B-Felt',
-        'Combo A': 'red',
-        'Combo B': 'blue',
-        'Combo C': 'white'
+        position: 'B-Felt',
+        combo_a: 'blue',
+        combo_b: 'yellow',
+        combo_c: 'red',
+        combo_d: 'white',
+        combo_e: 'black'
+      },
+      {
+        position: 'C',
+        combo_a: 'blue',
+        combo_b: 'yellow',
+        combo_c: 'red',
+        combo_d: 'white',
+        combo_e: 'black'
       }
     ];
   }
@@ -45,24 +62,25 @@ export class ArtworkFormComponent implements OnInit {
     this.artworkForm = new FormGroup({
       reference_num: new FormControl(null),
       client_name: new FormControl(null),
-      selectedCity: new FormControl(null),
+      division: new FormControl(null),
       date: new FormControl(null),
       description: new FormControl(null),
-      artworkDetails: new FormGroup({})
+      note: new FormControl(null)
     });
   }
 
-  addCombo() {
-    console.log(this.artworkDetails);
-    this.artworkDetails.forEach(function(artworkDetail) {
-      const combo_name =
-        'Combo ' +
-        String.fromCharCode(65 + Object.keys(artworkDetail.combos).length);
-      artworkDetail.combos[combo_name] = '';
-    });
-  }
+  onSubmit() {
 
-  editComplete(event) {
-    console.log(event);
+    const artwork = new Artwork(
+      this.artworkForm.value['reference_num'],
+      this.artworkForm.value['client_name'],
+      this.artworkForm.value['division'],
+      this.artworkForm.value['date'],
+      this.artworkForm.value['description'],
+      this.artworkForm.value['note'],
+      this.artworkDetails
+    );
+
+    console.log(artwork);
   }
 }

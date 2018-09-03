@@ -9,7 +9,7 @@ import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
 import {CalendarModule, DropdownModule, InputTextareaModule} from 'primeng/primeng';
 import {TableModule} from 'primeng/table';
-import { TableWorkComponent } from './table-work/table-work.component';
+import { TableWorkComponent } from './artwork-form/table-work/table-work.component';
 
 @NgModule({
   imports: [

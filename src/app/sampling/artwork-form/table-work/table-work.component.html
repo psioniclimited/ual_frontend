@@ -1,0 +1,34 @@
+<p-table
+  #dt
+  [columns]="cols"
+  [value]="artworkDetails">
+
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+        {{col.header}}
+      </th>
+      <th>
+        Delete
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData let-columns="columns" let-rowIndex="rowIndex">
+    <tr>
+      <td pEditableColumn *ngFor="let col of columns">
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <input type="text" [(ngModel)]="rowData[col.field]" name="columns">
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{rowData[col.field]}}
+          </ng-template>
+        </p-cellEditor>
+      </td>
+      <td>
+        <button class="submit-color" name="basic" pButton type="button" (click)="onDelete(rowIndex)"  label="Delete"></button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+<p-button label="Add Position" (onClick)="addPosition($event)"></p-button>

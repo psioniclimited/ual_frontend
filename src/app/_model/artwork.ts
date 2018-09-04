@@ -7,6 +7,7 @@ export class Artwork {
   date: string;
   description: string;
   note: string;
+  artwork_images: any[];
   artworkDetails: ArtworkDetail[];
 
   constructor(
@@ -16,6 +17,7 @@ export class Artwork {
     date: string,
     description: string,
     note: string,
+    artwork_images: any[],
     artworkDetails: ArtworkDetail[]
   ) {
     this.reference_number = reference_number;
@@ -24,6 +26,7 @@ export class Artwork {
     this.date = date;
     this.description = description;
     this.note = note;
+    this.artwork_images = artwork_images;
     this.artworkDetails = artworkDetails;
   }
 }

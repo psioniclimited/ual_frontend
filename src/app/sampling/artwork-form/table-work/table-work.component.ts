@@ -18,11 +18,11 @@ export class TableWorkComponent implements OnInit {
   addPosition(event) {
     this.artworkDetails.push({
       position: '',
-      combo_a: '',
-      combo_b: '',
-      combo_c: '',
-      combo_d: '',
-      combo_e: ''
+      a: '',
+      b: '',
+      c: '',
+      d: '',
+      e: ''
     });
   }
 

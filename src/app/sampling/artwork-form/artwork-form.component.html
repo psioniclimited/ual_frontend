@@ -31,23 +31,38 @@
       </div>
 
       <div class="ui-md-6 ui-g-12">
-        <label for="date_received">Date Received</label>
+        <label for="date">Date Received</label>
         <p-calendar [monthNavigator]="true"
                     [yearNavigator]="true"
                     yearRange="2000:2030"
                     dateFormat="dd-mm-yy"
-                    id="date_received"
-                    name="date_received"
+                    id="date"
+                    name="date"
                     formControlName="date"></p-calendar>
       </div>
 
-      <div class="ui-md-6 ui-g-12">
+      <div class="ui-md-12 ui-g-12">
         <label for="description">Description</label>
         <textarea pInputTextarea
                   id="description"
                   name="description"
                   formControlName="description"></textarea>
       </div>
+
+      <p-fileUpload
+        #artworkImages
+        name="artwork_images[]"
+        [showUploadButton]="false"
+        multiple="multiple"
+        accept="image/*"
+        maxFileSize="1000000">
+        <ng-template pTemplate="content">
+          <!--<ul *ngIf="uploadedFiles.length">-->
+            <!--<li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>-->
+          <!--</ul>-->
+        </ng-template>
+      </p-fileUpload>
+
       <app-table-work
         [cols]="cols"
         [artworkDetails]="artworkDetails">

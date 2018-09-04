@@ -7,7 +7,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CardModule} from 'primeng/card';
 import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
-import {CalendarModule, DropdownModule, InputTextareaModule} from 'primeng/primeng';
+import {CalendarModule, ColorPickerModule, DropdownModule, FileUploadModule, InputTextareaModule} from 'primeng/primeng';
 import {TableModule} from 'primeng/table';
 import { TableWorkComponent } from './artwork-form/table-work/table-work.component';
 
@@ -24,7 +24,9 @@ import { TableWorkComponent } from './artwork-form/table-work/table-work.compone
     CalendarModule,
     InputTextareaModule,
     TableModule,
-    ButtonModule
+    ButtonModule,
+    ColorPickerModule,
+    FileUploadModule
   ],
   declarations: [ArtworkFormComponent, TableWorkComponent]
 })

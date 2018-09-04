@@ -1,0 +1,17 @@
+<p-card>
+
+  <h3 class="first">Basic</h3>
+  <div class="ui-g" style="margin-bottom:10px">
+    <div class="ui-g-3"><p-checkbox name="group1" value="New York" label="New York" [(ngModel)]="selectedCities" inputId="ny"></p-checkbox></div>
+    <div class="ui-g-3"><p-checkbox name="group1" value="San Francisco" label="San Francisco" [(ngModel)]="selectedCities" inputId="sf"></p-checkbox></div>
+    <div class="ui-g-3"><p-checkbox name="group1" value="Los Angeles" label="Los Angeles" [(ngModel)]="selectedCities" inputId="la"></p-checkbox></div>
+    <div class="ui-g-3"><p-checkbox name="group1" value="Kalama" label="Kalama" [(ngModel)]="selectedCities" inputId="la"></p-checkbox></div>
+    <div class="ui-g-3"><p-checkbox name="group1" value="Oganoga" label="Oganoga" [(ngModel)]="selectedCities" inputId="ny"></p-checkbox></div>
+    <div class="ui-g-3"><p-checkbox name="group1" value="Ohio" label="Ohio" [(ngModel)]="selectedCities" inputId="sf"></p-checkbox></div>
+    <div class="ui-g-3"><p-checkbox name="group1" value="Wakanda" label="Wakanda" [(ngModel)]="selectedCities" inputId="la"></p-checkbox></div>
+    <div class="ui-g-3"><p-checkbox name="group1" value="Dhaka" label="Dhaka" [(ngModel)]="selectedCities" inputId="la"></p-checkbox></div>
+  </div>
+
+  Selected Cities: <span *ngFor="let city of selectedCities" style="margin-right:10px">{{city}}</span>
+
+</p-card>

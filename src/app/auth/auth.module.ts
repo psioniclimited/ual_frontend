@@ -8,16 +8,21 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
+import { TableModule } from 'primeng/table';
+import { DropdownModule } from 'primeng/primeng';
+import {CheckboxModule} from 'primeng/checkbox';
 
 // Components
 import { AuthenticatedUserComponent } from './authenticated-user/authenticated-user.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { UserTableComponent } from './user-table/user-table.component';
-import { TableModule } from 'primeng/table';
 import { PermissionComponent } from './permission/permission.component';
 import { PermissionFormComponent } from './permission/permission-form/permission-form.component';
 import { PermissionTableComponent } from './permission/permission-table/permission-table.component';
-import { DropdownModule } from 'primeng/primeng';
+import { RoleComponent } from './role/role.component';
+import { RoleFormComponent } from './Role/role-form/role-form.component';
+import { RoleTableComponent } from './Role/role-table/role-table.component';
+import { RoleCheckboxComponent } from './Role/role-checkbox/role-checkbox.component';
 
 @NgModule({
   imports: [
@@ -29,7 +34,8 @@ import { DropdownModule } from 'primeng/primeng';
     InputTextModule,
     ButtonModule,
     TableModule,
-    DropdownModule
+    DropdownModule,
+    CheckboxModule
   ],
   declarations: [
     AuthenticatedUserComponent,
@@ -37,7 +43,11 @@ import { DropdownModule } from 'primeng/primeng';
     UserTableComponent,
     PermissionComponent,
     PermissionFormComponent,
-    PermissionTableComponent
+    PermissionTableComponent,
+    RoleComponent,
+    RoleFormComponent,
+    RoleTableComponent,
+    RoleCheckboxComponent
   ]
 })
 export class AuthModule {}

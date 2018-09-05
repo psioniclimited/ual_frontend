@@ -10,6 +10,7 @@ import {ButtonModule} from 'primeng/button';
 import {CalendarModule, ColorPickerModule, DropdownModule, FileUploadModule, InputTextareaModule} from 'primeng/primeng';
 import {TableModule} from 'primeng/table';
 import { TableWorkComponent } from './artwork-form/table-work/table-work.component';
+import { DisplayTableComponent } from './display-table/display-table.component';
 
 @NgModule({
   imports: [
@@ -28,6 +29,6 @@ import { TableWorkComponent } from './artwork-form/table-work/table-work.compone
     ColorPickerModule,
     FileUploadModule
   ],
-  declarations: [ArtworkFormComponent, TableWorkComponent]
+  declarations: [ArtworkFormComponent, TableWorkComponent, DisplayTableComponent]
 })
 export class SamplingModule { }

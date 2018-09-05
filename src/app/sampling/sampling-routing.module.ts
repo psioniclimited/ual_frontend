@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ArtworkFormComponent } from './artwork-form/artwork-form.component';
-import {DisplayTableComponent} from './display-table/display-table.component';
+import {SampleCardFormComponent} from './sample-card-form/sample-card-form.component';
 
 const routes: Routes = [
   { path: 'artwork/create', component: ArtworkFormComponent },
-  { path: 'artwork/display', component: DisplayTableComponent }
+  { path: 'sample-card/create', component: SampleCardFormComponent }
 ];
 
 @NgModule({

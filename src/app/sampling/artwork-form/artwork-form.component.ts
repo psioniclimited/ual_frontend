@@ -18,7 +18,6 @@ export class ArtworkFormComponent implements OnInit {
   cols: any[];
   artworkForm: FormGroup;
   artworkDetails: ArtworkDetail[];
-  fileuploadUrl: string;
 
   constructor(private artWorkService: ArtworkService) {
     this.division = [

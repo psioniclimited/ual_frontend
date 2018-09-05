@@ -7,6 +7,7 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./table-work.component.scss']
 })
 export class TableWorkComponent implements OnInit {
+  color: string;
   @Input()
   cols: any[];
   @Input()

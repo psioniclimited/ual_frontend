@@ -24,7 +24,7 @@ const routes: Routes = [
     component: HomeLayoutComponent,
     children: [
       { path: 'auth', loadChildren: '../app/auth/auth.module#AuthModule' },
-      { path: 'sampling', loadChildren: '../app/sampling/sampling.module#SamplingModule' },
+      { path: '', loadChildren: '../app/sampling/sampling.module#SamplingModule' },
     ]
   }
 ];

@@ -7,10 +7,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CardModule} from 'primeng/card';
 import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
-import {CalendarModule, ColorPickerModule, DropdownModule, FileUploadModule, InputTextareaModule} from 'primeng/primeng';
+import {CalendarModule, ColorPickerModule, DropdownModule, FileUploadModule, InputTextareaModule, TabMenuModule} from 'primeng/primeng';
 import {TableModule} from 'primeng/table';
 import { TableWorkComponent } from './artwork-form/table-work/table-work.component';
-import { DisplayTableComponent } from './display-table/display-table.component';
+import { SampleCardFormComponent } from './sample-card-form/sample-card-form.component';
 
 @NgModule({
   imports: [
@@ -27,8 +27,9 @@ import { DisplayTableComponent } from './display-table/display-table.component';
     TableModule,
     ButtonModule,
     ColorPickerModule,
-    FileUploadModule
+    FileUploadModule,
+    TabMenuModule
   ],
-  declarations: [ArtworkFormComponent, TableWorkComponent, DisplayTableComponent]
+  declarations: [ArtworkFormComponent, TableWorkComponent, SampleCardFormComponent]
 })
 export class SamplingModule { }

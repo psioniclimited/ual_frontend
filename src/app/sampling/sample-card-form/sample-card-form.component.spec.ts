@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DisplayTableComponent } from './display-table.component';
+import { SampleCardFormComponent } from './sample-card-form.component';
 
-describe('DisplayTableComponent', () => {
-  let component: DisplayTableComponent;
-  let fixture: ComponentFixture<DisplayTableComponent>;
+describe('SampleCardFormComponent', () => {
+  let component: SampleCardFormComponent;
+  let fixture: ComponentFixture<SampleCardFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DisplayTableComponent ]
+      declarations: [ SampleCardFormComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DisplayTableComponent);
+    fixture = TestBed.createComponent(SampleCardFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

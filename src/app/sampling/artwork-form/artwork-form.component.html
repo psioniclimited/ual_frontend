@@ -1,5 +1,5 @@
 <p-card>
-  <form class="container ui-fluid" [formGroup]="artworkForm">
+  <form class="container ui-fluid" [formGroup]="artworkForm" (ngSubmit)="onSubmit()">
     <label>CREATE NEW ARTWORK SHEET</label>
     <hr>
     <div class="ui-g form-group ">
@@ -20,66 +20,60 @@
 
       <div class="ui-md-6 ui-g-12">
         <label for="division">Division</label>
-        <p-dropdown [options]="cities"
-                    placeholder="Select a City"
+        <p-dropdown [options]="division"
+                    placeholder="Select a Division"
                     optionLabel="name"
                     id="division"
                     name="division"
                     [showClear]="true"
                     [style]="{'width':'100%'}"
-                    formControlName="selectedCity"></p-dropdown>
+                    formControlName="division"></p-dropdown>
       </div>
 
       <div class="ui-md-6 ui-g-12">
-        <label for="date_received">Date Received</label>
+        <label for="date">Date Received</label>
         <p-calendar [monthNavigator]="true"
                     [yearNavigator]="true"
                     yearRange="2000:2030"
                     dateFormat="dd-mm-yy"
-                    id="date_received"
-                    name="date_received"
+                    id="date"
+                    name="date"
                     formControlName="date"></p-calendar>
       </div>
 
-      <div class="ui-md-6 ui-g-12">
+      <div class="ui-md-12 ui-g-12">
         <label for="description">Description</label>
         <textarea pInputTextarea
                   id="description"
                   name="description"
                   formControlName="description"></textarea>
       </div>
+
+      <p-fileUpload
+        #artworkImages
+        name="artwork_images[]"
+        [showUploadButton]="false"
+        multiple="multiple"
+        accept="image/*"
+        maxFileSize="1000000">
+        <ng-template pTemplate="content">
+          <!--<ul *ngIf="uploadedFiles.length">-->
+            <!--<li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>-->
+          <!--</ul>-->
+        </ng-template>
+      </p-fileUpload>
+
+      <app-table-work
+        [cols]="cols"
+        [artworkDetails]="artworkDetails">
+      </app-table-work>
+      <div class="ui-md-12 ui-g-12 ">
+        <input type="text" id="note" class="form-control"
+               pInputText placeholder="Note"
+               name="note" formControlName="note">
+      </div>
       <button class="submit-color" name="basic" pButton type="submit" label="Submit"></button>
     </div>
   </form>
-  <p-table
-    #dt
-    [columns]="cols"
-    [value]="artworkDetails">
-    <ng-template pTemplate="header" let-columns>
-      <tr>
-        <th *ngFor="let col of columns" [pSortableColumn]="col.field">
-          {{col.header}}
-          <p-sortIcon [field]="col.field"></p-sortIcon>
-        </th>
-      </tr>
-      <tr>
-        <th *ngFor="let col of columns" [ngSwitch]="col.field">
-          <input *ngSwitchCase="'id'" pInputText type="text"
-                 (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
-          <input *ngSwitchCase="'name'" pInputText type="text"
-                 (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
-          <input *ngSwitchCase="'email'" pInputText type="text"
-                 (input)="dt.filter($event.target.value, col.field, col.filterMatchMode)">
-        </th>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-rowData let-columns="columns">
-      <tr>
-        <td *ngFor="let col of columns">
-          {{rowData[col.field]}}
-        </td>
-      </tr>
-    </ng-template>
-  </p-table>
 </p-card>
 

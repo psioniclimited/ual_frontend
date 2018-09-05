@@ -6,6 +6,7 @@ import { UserFormComponent } from './user-form/user-form.component';
 import { UserTableComponent } from './user-table/user-table.component';
 import { PermissionComponent } from './permission/permission.component';
 import { PermissionFormComponent } from './permission/permission-form/permission-form.component';
+import { RoleComponent } from './role/role.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,14 @@ const routes: Routes = [
       { path: '', component: PermissionFormComponent },
       { path: ':id/edit', component: PermissionFormComponent }
     ]
+  },
+  {
+    path: 'roles',
+    component: RoleComponent,
+    // children: [
+    //   { path: '', component: PermissionFormComponent },
+    //   { path: ':id/edit', component: PermissionFormComponent }
+    // ]
   }
 ];
 

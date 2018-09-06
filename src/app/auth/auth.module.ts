@@ -20,9 +20,9 @@ import { PermissionComponent } from './permission/permission.component';
 import { PermissionFormComponent } from './permission/permission-form/permission-form.component';
 import { PermissionTableComponent } from './permission/permission-table/permission-table.component';
 import { RoleComponent } from './role/role.component';
-import { RoleFormComponent } from './Role/role-form/role-form.component';
-import { RoleTableComponent } from './Role/role-table/role-table.component';
-import { RoleCheckboxComponent } from './Role/role-checkbox/role-checkbox.component';
+import { RoleFormComponent } from './role/role-form/role-form.component';
+import { RoleTableComponent } from './role/role-table/role-table.component';
+import { RoleCheckboxComponent } from './role/role-checkbox/role-checkbox.component';
 
 @NgModule({
   imports: [

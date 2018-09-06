@@ -15,8 +15,11 @@ export class SampleCardFormComponent implements OnInit {
 
   ngOnInit() {
     this.items = [
-      {label: 'Woven Label', icon: 'fa fa-fw fa-bar-chart'},
+      {label: 'Woven Label', icon: 'fa fa-fw fa-bar-chart',
+        routerLink: '/artwork/create'},
     ];
   }
+
+
 
 }

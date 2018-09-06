@@ -30,14 +30,6 @@ const routes: Routes = [
       { path: '', component: PermissionFormComponent },
       { path: ':id/edit', component: PermissionFormComponent }
     ]
-  },
-  {
-    path: 'roles',
-    component: RoleComponent,
-    // children: [
-    //   { path: '', component: PermissionFormComponent },
-    //   { path: ':id/edit', component: PermissionFormComponent }
-    // ]
   }
 ];
 

@@ -11,7 +11,7 @@ export class RoleCheckboxComponent implements OnInit {
 
   selectedCategories: string[] = ['Technology', 'Sports'];
 
-  checked: boolean = false;
+  checked: any = false;
   constructor() {}
 
   ngOnInit() {}

@@ -30,11 +30,32 @@
     </ng-template>
     <ng-template pTemplate="body" let-rowData let-columns="columns">
       <tr>
-        <td *ngFor="let col of columns" >
-          {{rowData[col.field]}}
+        <td>
+          {{rowData.position.artwork.date}}
         </td>
         <td>
-          <button class="submit-color" name="basic" pButton type="button" (click)="editPermission(rowData['id'])" label="Edit"></button>
+          {{rowData.position.artwork.client_name}}
+        </td>
+        <td>
+          {{rowData.position.artwork.reference_number}}
+        </td>
+        <td *ngIf="rowData.position.artwork.division == 0">
+          Men
+        </td>
+        <td *ngIf="rowData.position.artwork.division == 1">
+          Women
+        </td>
+        <td *ngIf="rowData.position.artwork.division == 2">
+          Children
+        </td>
+        <td>
+          {{rowData.position.artwork.description}}
+        </td>
+        <td>
+          {{rowData.position.name}}
+        </td>
+        <td>
+          <button class="submit-color" name="basic" pButton type="button" (click)="editPermission(rowData.position.artwork['id'])" label="Edit"></button>
         </td>
       </tr>
     </ng-template>

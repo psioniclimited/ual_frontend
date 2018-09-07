@@ -43,7 +43,7 @@ export class ArtworkListComponent implements OnInit {
     });
   }
 
-  editPermission(id) {
+  editPermission(id: number) {
     console.log(id);
   }
 }

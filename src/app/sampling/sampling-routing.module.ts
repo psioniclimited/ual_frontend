@@ -7,7 +7,14 @@ import {ArtworkListComponent} from './artwork-list/artwork-list.component';
 const routes: Routes = [
   { path: 'artwork/create', component: ArtworkFormComponent },
   { path: 'sample-card/create', component: SampleCardFormComponent },
-  { path: 'artwork-list/table', component: ArtworkListComponent }
+  {
+    path: 'artwork',
+    component: ArtworkListComponent,
+    children: [
+      { path: '', component: ArtworkListComponent},
+      { path: ':id/edit', component: ArtworkFormComponent}
+    ]
+  }
 ];
 
 @NgModule({

@@ -21,7 +21,9 @@ export class ArtworkFormComponent implements OnInit {
   cols: any[];
   artworkForm: FormGroup;
   artworkDetails: ArtworkDetail[];
-
+  // server data
+  artwork_server_data: Artwork;
+  server_date: Date;
   constructor(
     private artWorkService: ArtworkService,
     private route: ActivatedRoute
@@ -60,13 +62,27 @@ export class ArtworkFormComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.artwork_server_data = new Artwork('', '', '', '', '', '', [], []);
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
       if (this.id) {
-        console.log(this.id);
+        this.artWorkService.show(this.id).subscribe(
+          data => {
+            console.log(data);
+            this.artwork_server_data = data;
+            this.server_date = new Date(data.date);
+            // console.log(this.artwork_server_data.reference_number);
+          },
+          error => {
+            console.log(error);
+          }
+        );
       }
     });
+    this.initForm();
+  }
 
+  initForm() {
     this.artworkForm = new FormGroup({
       reference_num: new FormControl(null),
       client_name: new FormControl(null),

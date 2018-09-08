@@ -7,7 +7,7 @@
         <label for="reference_num">Reference No</label>
         <input type="text" id="reference_num" class="form-control"
                pInputText placeholder="Enter Reference"
-               name="reference_num" formControlName="reference_num">
+               name="reference_num" formControlName="reference_num" [(ngModel)]="artwork_server_data.reference_number">
       </div>
 
       <div class=" ui-md-6 ui-g-12">
@@ -15,7 +15,7 @@
         <input type="text" id="client_name"
                class="form-control"
                pInputText placeholder="Enter Client Name"
-               name="client_name" formControlName="client_name">
+               name="client_name" formControlName="client_name" [(ngModel)]="artwork_server_data.client_name">
       </div>
 
       <div class="ui-md-6 ui-g-12">
@@ -27,7 +27,7 @@
                     name="division"
                     [showClear]="true"
                     [style]="{'width':'100%'}"
-                    formControlName="division"></p-dropdown>
+                    formControlName="division" [filter]="true"></p-dropdown>
       </div>
 
       <div class="ui-md-6 ui-g-12">
@@ -38,7 +38,7 @@
                     dateFormat="dd-mm-yy"
                     id="date"
                     name="date"
-                    formControlName="date"></p-calendar>
+                    formControlName="date" [ngModel]="server_date"  ></p-calendar>
       </div>
 
       <div class="ui-md-12 ui-g-12">
@@ -46,7 +46,7 @@
         <textarea pInputTextarea
                   id="description"
                   name="description"
-                  formControlName="description"></textarea>
+                  formControlName="description" [ngModel]=artwork_server_data.description></textarea>
       </div>
 
       <p-fileUpload
@@ -70,7 +70,7 @@
       <div class="ui-md-12 ui-g-12 ">
         <input type="text" id="note" class="form-control"
                pInputText placeholder="Note"
-               name="note" formControlName="note">
+               name="note" formControlName="note" [ngModel]="artwork_server_data.note">
       </div>
       <button class="submit-color" name="basic" pButton type="submit" label="Submit"></button>
     </div>

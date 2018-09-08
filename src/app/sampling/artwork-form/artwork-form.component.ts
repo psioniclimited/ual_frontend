@@ -22,7 +22,7 @@ export class ArtworkFormComponent implements OnInit {
   artworkForm: FormGroup;
   artworkDetails: ArtworkDetail[];
   // server data
-  artwork_server_data: Artwork;
+  editArtwork: Artwork;
   server_date: Date;
   constructor(
     private artWorkService: ArtworkService,
@@ -62,20 +62,20 @@ export class ArtworkFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.artwork_server_data = new Artwork();
+    this.editArtwork = new Artwork();
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
       if (this.id) {
         this.artWorkService.show(this.id).subscribe(
           data => {
-            this.artwork_server_data = data;
+            this.editArtwork = data;
             this.server_date = new Date(data.date);
             this.artworkDetails.splice(0, 2);
-            for ( let i = 0; i < this.artwork_server_data.positions.length ; i++ ) {
+            for (let i = 0; i < this.editArtwork.positions.length ; i++ ) {
               var obj = {
-                position: this.artwork_server_data.positions[i].name
+                position: this.editArtwork.positions[i].name
               };
-              let combos = this.artwork_server_data.positions[i].combos;
+              let combos = this.editArtwork.positions[i].combos;
               for (let j = 0 ; j < combos.length; j++) {
                 let name = combos[j].name;
                 let color = combos[j].color;

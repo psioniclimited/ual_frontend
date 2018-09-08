@@ -44,6 +44,7 @@ export class ArtworkListComponent implements OnInit {
     this.artworkServipe.index(event).subscribe(permissions => {
       this.totalRecords = permissions.total;
       this.permissions = permissions.data;
+      console.log(this.permissions);
       this.loading = false;
     });
   }

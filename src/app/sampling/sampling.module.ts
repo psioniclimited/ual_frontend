@@ -12,6 +12,7 @@ import {TableModule} from 'primeng/table';
 import { TableWorkComponent } from './artwork-form/table-work/table-work.component';
 import { SampleCardFormComponent } from './sample-card-form/sample-card-form.component';
 import { ArtworkListComponent } from './artwork-list/artwork-list.component';
+import { ArtworkComponent } from './artwork/artwork.component';
 
 @NgModule({
   imports: [
@@ -31,6 +32,6 @@ import { ArtworkListComponent } from './artwork-list/artwork-list.component';
     FileUploadModule,
     TabMenuModule
   ],
-  declarations: [ArtworkFormComponent, TableWorkComponent, SampleCardFormComponent, ArtworkListComponent]
+  declarations: [ArtworkFormComponent, TableWorkComponent, SampleCardFormComponent, ArtworkListComponent, ArtworkComponent]
 })
 export class SamplingModule { }

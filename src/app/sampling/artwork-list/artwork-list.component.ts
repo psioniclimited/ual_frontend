@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChildren } from '@angular/core';
 import { ArtworkService } from '../service/artwork.service';
 import { Paginate } from '../../_model/paginate';
 import { LazyLoadEvent } from 'primeng/api';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-artwork-list',
@@ -20,7 +21,11 @@ export class ArtworkListComponent implements OnInit {
 
   loading: boolean;
 
-  constructor(private artworkServipe: ArtworkService) {}
+  constructor(
+    private artworkServipe: ArtworkService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.cols = [
@@ -45,5 +50,8 @@ export class ArtworkListComponent implements OnInit {
 
   editPermission(id: number) {
     console.log(id);
+    this.router.navigate(['../artwork/', id, 'edit'], {
+      relativeTo: this.route
+    });
   }
 }

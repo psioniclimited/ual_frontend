@@ -1,9 +1,10 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Artwork } from '../../_model/artwork';
 import { ArtworkService } from '../service/artwork.service';
 import { ArtworkDetail } from '../../_model/artwork-detail';
-import {FileUpload} from 'primeng/primeng';
+import { FileUpload } from 'primeng/primeng';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-artwork-form',
@@ -11,15 +12,20 @@ import {FileUpload} from 'primeng/primeng';
   styleUrls: ['./artwork-form.component.scss']
 })
 export class ArtworkFormComponent implements OnInit {
+  id: number;
   division: any[];
   artwork_images: any[] = [];
-  @ViewChild('artworkImages') fileInput: FileUpload;
+  @ViewChild('artworkImages')
+  fileInput: FileUpload;
   date: Date;
   cols: any[];
   artworkForm: FormGroup;
   artworkDetails: ArtworkDetail[];
 
-  constructor(private artWorkService: ArtworkService) {
+  constructor(
+    private artWorkService: ArtworkService,
+    private route: ActivatedRoute
+  ) {
     this.division = [
       { name: 'Men', value: '0' },
       { name: 'Women', value: '1' },
@@ -54,6 +60,13 @@ export class ArtworkFormComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.route.params.subscribe((params: Params) => {
+      this.id = +params['id'];
+      if (this.id) {
+        console.log(this.id);
+      }
+    });
+
     this.artworkForm = new FormGroup({
       reference_num: new FormControl(null),
       client_name: new FormControl(null),
@@ -77,13 +90,12 @@ export class ArtworkFormComponent implements OnInit {
       this.artworkDetails
     );
     console.log(this.artwork_images);
-    this.artWorkService
-      .store(artwork)
-      .subscribe(response => {
-        console.log(response);
-        this.fileInput.url = 'http://localhost:8000/artwork/' + response + '/artwork_image';
-        this.fileInput.upload();
-      });
+    this.artWorkService.store(artwork).subscribe(response => {
+      console.log(response);
+      this.fileInput.url =
+        'http://localhost:8000/artwork/' + response + '/artwork_image';
+      this.fileInput.upload();
+    });
     console.log(this.fileInput);
   }
 

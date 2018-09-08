@@ -10,6 +10,7 @@ export class SampleCardFormComponent implements OnInit {
 
   items: MenuItem[];
 
+  value: Date;
 
   constructor() { }
 

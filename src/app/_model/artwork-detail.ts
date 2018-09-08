@@ -7,12 +7,12 @@ export class ArtworkDetail {
   e: string;
 
   constructor(
-    position: string,
-    a: string,
-    b: string,
-    c: string,
-    d: string,
-    e: string
+    position: string = '',
+    a: string = '',
+    b: string = '',
+    c: string = '',
+    d: string = '',
+    e: string = ''
   ) {
     this.position = position;
     this.a = a;

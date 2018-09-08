@@ -62,16 +62,27 @@ export class ArtworkFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.artwork_server_data = new Artwork('', '', '', '', '', '', [], []);
+    this.artwork_server_data = new Artwork();
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
       if (this.id) {
         this.artWorkService.show(this.id).subscribe(
           data => {
-            console.log(data);
             this.artwork_server_data = data;
             this.server_date = new Date(data.date);
-            // console.log(this.artwork_server_data.reference_number);
+            this.artworkDetails.splice(0, 2);
+            for ( let i = 0; i < this.artwork_server_data.positions.length ; i++ ) {
+              var obj = {
+                position: this.artwork_server_data.positions[i].name
+              };
+              let combos = this.artwork_server_data.positions[i].combos;
+              for (let j = 0 ; j < combos.length; j++) {
+                let name = combos[j].name;
+                let color = combos[j].color;
+                obj[name] = color;
+              }
+              this.artworkDetails.push(obj);
+            }
           },
           error => {
             console.log(error);
@@ -119,3 +130,4 @@ export class ArtworkFormComponent implements OnInit {
     console.log('uploading');
   }
 }
+

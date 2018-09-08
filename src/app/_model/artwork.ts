@@ -11,14 +11,14 @@ export class Artwork {
   artworkDetails: ArtworkDetail[];
 
   constructor(
-    reference_number: string,
-    client_name: string,
-    division: string,
-    date: string,
-    description: string,
-    note: string,
-    artwork_images: any[],
-    artworkDetails: ArtworkDetail[]
+    reference_number: string = '',
+    client_name: string = '',
+    division: string = '',
+    date: string = '',
+    description: string = '',
+    note: string = '',
+    artwork_images: any[] = [],
+    artworkDetails: ArtworkDetail[] = []
   ) {
     this.reference_number = reference_number;
     this.client_name = client_name;

@@ -34,7 +34,8 @@ export class ArtworkListComponent implements OnInit {
       { field: 'reference_number', header: 'Reference No' },
       { field: 'division', header: 'Division' },
       { field: 'description', header: 'Description' },
-      { field: 'name', header: 'Combo' }
+      { field: 'name', header: 'Combo' },
+      { field: 'files', header: 'Files' },
     ];
 
     this.loading = true;

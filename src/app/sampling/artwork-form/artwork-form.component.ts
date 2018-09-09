@@ -63,7 +63,7 @@ export class ArtworkFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.selectedDivision = { name: 'Women', value: '1' };
+    // this.selectedDivision = { name: 'Women', value: '1' };
     this.editArtwork = new Artwork();
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
@@ -73,6 +73,7 @@ export class ArtworkFormComponent implements OnInit {
             this.editArtwork = data;
             this.server_date = new Date(data.date);
             this.artworkDetails.splice(0, 2);
+            this.selectedDivision = this.editArtwork.division;
             for (let i = 0; i < this.editArtwork.positions.length; i++) {
               var obj = {
                 position: this.editArtwork.positions[i].name
@@ -132,6 +133,7 @@ export class ArtworkFormComponent implements OnInit {
       );
       console.log(artwork);
     } else {
+      console.log(artwork);
       // call the store function
       this.artWorkService.store(artwork).subscribe(response => {
         console.log(response);

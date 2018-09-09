@@ -39,20 +39,19 @@
         <td>
           {{rowData.position.artwork.reference_number}}
         </td>
-        <td *ngIf="rowData.position.artwork.division == 0">
-          Men
-        </td>
-        <td *ngIf="rowData.position.artwork.division == 1">
-          Women
-        </td>
-        <td *ngIf="rowData.position.artwork.division == 2">
-          Children
+        <td>
+          {{ rowData.position.artwork.division.name }}
         </td>
         <td>
           {{rowData.position.artwork.description}}
         </td>
         <td>
           {{rowData.name}}
+        </td>
+        <td>
+          <a *ngFor="let artwork_image of rowData.position.artwork.artwork_images" href="#">
+            {{artwork_image.filepath}}
+          </a>
         </td>
         <td>
           <button class="submit-color" name="basic" pButton type="button" (click)="editPermission(rowData.position.artwork['id'])" label="Edit"></button>

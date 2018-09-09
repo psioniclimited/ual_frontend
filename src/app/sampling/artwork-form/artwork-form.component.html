@@ -63,6 +63,28 @@
         </ng-template>
       </p-fileUpload>
 
+      <p-table
+        #dt
+        [columns]="cols"
+        [value]="artworkDetails">
+
+        <ng-template pTemplate="header" let-columns>
+          <tr>
+            <th>
+              image
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns" let-rowIndex="rowIndex">
+          <tr>
+            <td>
+              hello
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+      <hr>
+
       <app-table-work
         [cols]="cols"
         [artworkDetails]="artworkDetails">

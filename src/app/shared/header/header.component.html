@@ -15,10 +15,19 @@
         <li class="nav-item ">
           <a class="nav-link" href="#"><i class="pi pi-home"></i> <span class="nav_text">Dashboard</span></a>
         </li>
+        <li class="nav-item  dropdown" appDropdown>
+          <a class="nav-link"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="pi pi-pencil"></i> <span class="nav_text">Sample</span> <i class="pi pi-chevron-down"></i>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item"  [routerLink]="['/artwork/create']" ><i class="fas fa-paint-brush"></i>Create New Artwork</a>
+            <a class="dropdown-item"  [routerLink]="['/artwork']"><i class="fas fa-paint-brush"></i>Artwork List</a>
+          </div>
+        </li>
 
         <li class="nav-item  dropdown" appDropdown>
           <a class="nav-link"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="pi pi-home"></i> <span class="nav_text">Menu Colors</span> <i class="pi pi-chevron-down"></i>
+            <i class="pi pi-cog"></i> <span class="nav_text">Production</span> <i class="pi pi-chevron-down"></i>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" (click)="onLogout()" ><i class="fas fa-paint-brush"></i>Logout</a>
@@ -27,7 +36,7 @@
         </li>
         <li class="nav-item  dropdown" appDropdown>
           <a class="nav-link"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="pi pi-home"></i> <span class="nav_text">Menu Colors</span> <i class="pi pi-chevron-down"></i>
+            <i class="pi pi-home"></i> <span class="nav_text">Sales</span> <i class="pi pi-chevron-down"></i>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" ><i class="fas fa-paint-brush"></i> Light</a>

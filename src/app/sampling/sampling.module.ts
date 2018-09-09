@@ -13,6 +13,8 @@ import { TableWorkComponent } from './artwork-form/table-work/table-work.compone
 import { SampleCardFormComponent } from './sample-card-form/sample-card-form.component';
 import { ArtworkListComponent } from './artwork-list/artwork-list.component';
 import { ArtworkComponent } from './artwork/artwork.component';
+import {GrowlModule} from 'primeng/growl';
+
 
 @NgModule({
   imports: [
@@ -30,7 +32,8 @@ import { ArtworkComponent } from './artwork/artwork.component';
     ButtonModule,
     ColorPickerModule,
     FileUploadModule,
-    TabMenuModule
+    TabMenuModule,
+    GrowlModule
   ],
   declarations: [ArtworkFormComponent, TableWorkComponent, SampleCardFormComponent, ArtworkListComponent, ArtworkComponent]
 })

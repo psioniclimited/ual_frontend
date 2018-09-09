@@ -3,9 +3,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Artwork } from '../../_model/artwork';
 import { ArtworkService } from '../service/artwork.service';
 import { ArtworkDetail } from '../../_model/artwork-detail';
-import { FileUpload } from 'primeng/primeng';
-import { ActivatedRoute, Params } from '@angular/router';
-
+import { FileUpload, MessageService } from 'primeng/primeng';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Message } from 'primeng/components/common/api';
 @Component({
   selector: 'app-artwork-form',
   templateUrl: './artwork-form.component.html',
@@ -25,9 +25,12 @@ export class ArtworkFormComponent implements OnInit {
   // server data
   editArtwork: Artwork;
   server_date: Date;
+
   constructor(
     private artWorkService: ArtworkService,
-    private route: ActivatedRoute
+    private messageService: MessageService,
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     this.division = [
       { name: 'Men', value: '0' },
@@ -126,6 +129,12 @@ export class ArtworkFormComponent implements OnInit {
       this.artWorkService.update(this.id, artwork).subscribe(
         response => {
           console.log(response);
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Artwork Updated',
+            detail: 'Artwork Updated'
+          });
+          this.router.navigate(['../artwork']);
         },
         error => {
           console.log(error);
@@ -133,15 +142,18 @@ export class ArtworkFormComponent implements OnInit {
       );
       console.log(artwork);
     } else {
-      console.log(artwork);
       // call the store function
       this.artWorkService.store(artwork).subscribe(response => {
-        console.log(response);
         this.fileInput.url =
           'http://localhost:8000/artwork/' + response + '/artwork_image';
         this.fileInput.upload();
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Artwork Created',
+          detail: 'Artwork Created'
+        });
+        this.router.navigate(['../artwork']);
       });
-      console.log(this.fileInput);
     }
   }
 

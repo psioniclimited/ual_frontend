@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MenuItem} from 'primeng/api';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-sample-card-form',
@@ -7,11 +7,9 @@ import {MenuItem} from 'primeng/api';
   styleUrls: ['./sample-card-form.component.scss']
 })
 export class SampleCardFormComponent implements OnInit {
-
   items: MenuItem[];
 
   value: Date;
-
   constructor() { }
 
   ngOnInit() {
@@ -20,7 +18,5 @@ export class SampleCardFormComponent implements OnInit {
         routerLink: '/artwork/create'},
     ];
   }
-
-
 
 }

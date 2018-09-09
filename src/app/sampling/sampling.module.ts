@@ -11,6 +11,7 @@ import {CalendarModule, ColorPickerModule, DropdownModule, FileUploadModule, Inp
 import {TableModule} from 'primeng/table';
 import { TableWorkComponent } from './artwork-form/table-work/table-work.component';
 import { SampleCardFormComponent } from './sample-card-form/sample-card-form.component';
+import { SampleCardDetailComponent } from './sample-card-form/sample-card-detail/sample-card-detail.component';
 
 @NgModule({
   imports: [
@@ -30,6 +31,11 @@ import { SampleCardFormComponent } from './sample-card-form/sample-card-form.com
     FileUploadModule,
     TabMenuModule
   ],
-  declarations: [ArtworkFormComponent, TableWorkComponent, SampleCardFormComponent]
+  declarations: [
+    ArtworkFormComponent,
+    TableWorkComponent,
+    SampleCardFormComponent,
+    SampleCardDetailComponent
+  ]
 })
 export class SamplingModule { }

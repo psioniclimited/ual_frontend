@@ -38,4 +38,9 @@ export class ArtworkService {
   show(id: number): Observable<Artwork>  {
     return this.http.get<Artwork>('/artwork/' + id);
   }
+
+  update(id: number, artwork: Artwork) {
+    return this.http.put('/artwork/' + id, artwork);
+  }
+
 }

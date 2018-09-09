@@ -21,6 +21,7 @@ export class ArtworkFormComponent implements OnInit {
   cols: any[];
   artworkForm: FormGroup;
   artworkDetails: ArtworkDetail[];
+  selectedDivision: any;
   // server data
   editArtwork: Artwork;
   server_date: Date;
@@ -62,6 +63,7 @@ export class ArtworkFormComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.selectedDivision = { name: 'Women', value: '1' };
     this.editArtwork = new Artwork();
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
@@ -71,12 +73,12 @@ export class ArtworkFormComponent implements OnInit {
             this.editArtwork = data;
             this.server_date = new Date(data.date);
             this.artworkDetails.splice(0, 2);
-            for (let i = 0; i < this.editArtwork.positions.length ; i++ ) {
+            for (let i = 0; i < this.editArtwork.positions.length; i++) {
               var obj = {
                 position: this.editArtwork.positions[i].name
               };
               let combos = this.editArtwork.positions[i].combos;
-              for (let j = 0 ; j < combos.length; j++) {
+              for (let j = 0; j < combos.length; j++) {
                 let name = combos[j].name;
                 let color = combos[j].color;
                 obj[name] = color;
@@ -116,18 +118,32 @@ export class ArtworkFormComponent implements OnInit {
       this.artwork_images,
       this.artworkDetails
     );
-    console.log(this.artwork_images);
-    this.artWorkService.store(artwork).subscribe(response => {
-      console.log(response);
-      this.fileInput.url =
-        'http://localhost:8000/artwork/' + response + '/artwork_image';
-      this.fileInput.upload();
-    });
-    console.log(this.fileInput);
+    // console.log(this.artwork_images);
+
+    if (this.id) {
+      // call the update function
+      this.artWorkService.update(this.id, artwork).subscribe(
+        response => {
+          console.log(response);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+      console.log(artwork);
+    } else {
+      // call the store function
+      this.artWorkService.store(artwork).subscribe(response => {
+        console.log(response);
+        this.fileInput.url =
+          'http://localhost:8000/artwork/' + response + '/artwork_image';
+        this.fileInput.upload();
+      });
+      console.log(this.fileInput);
+    }
   }
 
   onUpload(event) {
     console.log('uploading');
   }
 }
-

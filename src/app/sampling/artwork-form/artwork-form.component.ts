@@ -5,7 +5,7 @@ import { ArtworkService } from '../service/artwork.service';
 import { ArtworkDetail } from '../../_model/artwork-detail';
 import { FileUpload, MessageService } from 'primeng/primeng';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Message } from 'primeng/components/common/api';
+import {Position} from '../../_model/position';
 @Component({
   selector: 'app-artwork-form',
   templateUrl: './artwork-form.component.html',
@@ -20,7 +20,7 @@ export class ArtworkFormComponent implements OnInit {
   date: Date;
   cols: any[];
   artworkForm: FormGroup;
-  artworkDetails: ArtworkDetail[];
+  positions: Position[];
   selectedDivision: any;
   // server data
   editArtwork: Artwork;
@@ -28,7 +28,6 @@ export class ArtworkFormComponent implements OnInit {
 
   constructor(
     private artWorkService: ArtworkService,
-    private messageService: MessageService,
     private route: ActivatedRoute,
     private router: Router
   ) {
@@ -45,57 +44,42 @@ export class ArtworkFormComponent implements OnInit {
       { field: 'd', header: 'Combo D' },
       { field: 'e', header: 'Combo E' }
     ];
-    this.artworkDetails = [
-      {
-        position: 'A',
-        a: 'blue',
-        b: 'yellow',
-        c: '',
-        d: '',
-        e: ''
-      },
-      {
-        position: 'B-Felt',
-        a: 'blue',
-        b: 'red',
-        c: '',
-        d: '',
-        e: ''
-      }
+    this.positions = [
+      new Position
     ];
   }
 
   ngOnInit() {
     // this.selectedDivision = { name: 'Women', value: '1' };
     this.editArtwork = new Artwork();
-    this.route.params.subscribe((params: Params) => {
-      this.id = +params['id'];
-      if (this.id) {
-        this.artWorkService.show(this.id).subscribe(
-          data => {
-            this.editArtwork = data;
-            this.server_date = new Date(data.date);
-            this.artworkDetails.splice(0, 2);
-            this.selectedDivision = this.editArtwork.division;
-            for (let i = 0; i < this.editArtwork.positions.length; i++) {
-              var obj = {
-                position: this.editArtwork.positions[i].name
-              };
-              let combos = this.editArtwork.positions[i].combos;
-              for (let j = 0; j < combos.length; j++) {
-                let name = combos[j].name;
-                let color = combos[j].color;
-                obj[name] = color;
-              }
-              this.artworkDetails.push(obj);
-            }
-          },
-          error => {
-            console.log(error);
-          }
-        );
-      }
-    });
+    // this.route.params.subscribe((params: Params) => {
+    //   this.id = +params['id'];
+    //   if (this.id) {
+    //     this.artWorkService.show(this.id).subscribe(
+    //       data => {
+    //         this.editArtwork = data;
+    //         this.server_date = new Date(data.date);
+    //         this.positions.splice(0, 2);
+    //         this.selectedDivision = this.editArtwork.division;
+    //         for (let i = 0; i < this.editArtwork.positions.length; i++) {
+    //           var obj = {
+    //             position: this.editArtwork.positions[i].name
+    //           };
+    //           let combos = this.editArtwork.positions[i].combos;
+    //           for (let j = 0; j < combos.length; j++) {
+    //             let name = combos[j].name;
+    //             let color = combos[j].color;
+    //             obj[name] = color;
+    //           }
+    //           this.positions.push(obj);
+    //         }
+    //       },
+    //       error => {
+    //         console.log(error);
+    //       }
+    //     );
+    //   }
+    // });
     this.initForm();
   }
 
@@ -120,7 +104,7 @@ export class ArtworkFormComponent implements OnInit {
       this.artworkForm.value['description'],
       this.artworkForm.value['note'],
       this.artwork_images,
-      this.artworkDetails
+      this.positions
     );
     // console.log(this.artwork_images);
 
@@ -128,12 +112,6 @@ export class ArtworkFormComponent implements OnInit {
       // call the update function
       this.artWorkService.update(this.id, artwork).subscribe(
         response => {
-          console.log(response);
-          this.messageService.add({
-            severity: 'success',
-            summary: 'Artwork Updated',
-            detail: 'Artwork Updated'
-          });
           this.router.navigate(['../artwork']);
         },
         error => {
@@ -147,11 +125,6 @@ export class ArtworkFormComponent implements OnInit {
         this.fileInput.url =
           'http://localhost:8000/artwork/' + response + '/artwork_image';
         this.fileInput.upload();
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Artwork Created',
-          detail: 'Artwork Created'
-        });
         this.router.navigate(['../artwork']);
       });
     }

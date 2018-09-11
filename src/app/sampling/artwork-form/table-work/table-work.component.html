@@ -15,16 +15,26 @@
   </ng-template>
   <ng-template pTemplate="body" let-rowData let-columns="columns" let-rowIndex="rowIndex">
     <tr>
-      <td pEditableColumn *ngFor="let col of columns">
+      <td pEditableColumn>
         <p-cellEditor>
           <ng-template pTemplate="input" class="ui-g">
-
-            <input type="text" [(ngModel)]="rowData[col.field]" name="columns" class="ui-g-4">
-            <p-colorPicker *ngIf="col.field !== 'position'" [(ngModel)]="color" class="ui-g-4"></p-colorPicker>
-            <p class="ui-g-4" *ngIf="col.field !== 'position'" style="margin-top:.5em">Selected Color: <span [ngStyle]="{'color':color}">{{color}}</span></p>
+            <input type="text" [(ngModel)]="rowData.name" name="columns" class="ui-g-4">
           </ng-template>
           <ng-template pTemplate="output">
-            {{rowData[col.field]}}
+            {{ rowData.name }}
+            <!--{{rowData.combos[0].name}}-->
+          </ng-template>
+        </p-cellEditor>
+      </td>
+      <td pEditableColumn *ngFor="let combo of rowData.combos">
+        <p-cellEditor>
+          <ng-template pTemplate="input" class="ui-g">
+            <input type="text" [(ngModel)]="combo.name" name="columns" class="ui-g-4">
+            <!--<p-colorPicker *ngIf="col.field !== 'position'" [(ngModel)]="color" class="ui-g-4"></p-colorPicker>-->
+            <!--<p class="ui-g-4" *ngIf="col.field !== 'position'" style="margin-top:.5em">Selected Color: <span [ngStyle]="{'color':color}">{{color}}</span></p>-->
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{ combo.name }}
           </ng-template>
         </p-cellEditor>
       </td>

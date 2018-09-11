@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Position } from '../../../_model/position';
 
 @Component({
   selector: 'app-table-work',
@@ -11,20 +12,15 @@ export class TableWorkComponent implements OnInit {
   @Input()
   cols: any[];
   @Input()
-  artworkDetails: any[];
+  artworkDetails: Position[];
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.artworkDetails);
+  }
 
   addPosition(event) {
-    this.artworkDetails.push({
-      position: '',
-      a: '',
-      b: '',
-      c: '',
-      d: '',
-      e: ''
-    });
+    this.artworkDetails.push(new Position());
   }
 
   onDelete(index) {

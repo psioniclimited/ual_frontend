@@ -22,7 +22,7 @@ export class ArtworkListComponent implements OnInit {
   loading: boolean;
 
   constructor(
-    private artworkServipe: ArtworkService,
+    private artworkService: ArtworkService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
@@ -42,7 +42,7 @@ export class ArtworkListComponent implements OnInit {
   }
 
   loadPermissionsLazy(event: LazyLoadEvent) {
-    this.artworkServipe.index(event).subscribe(permissions => {
+    this.artworkService.index(event).subscribe(permissions => {
       this.totalRecords = permissions.total;
       this.permissions = permissions.data;
       console.log(this.permissions);

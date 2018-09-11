@@ -1,4 +1,4 @@
-import { ArtworkDetail } from './artwork-detail';
+import {Position} from './position';
 
 export class Artwork {
   reference_number: string;
@@ -8,7 +8,7 @@ export class Artwork {
   description: string;
   note: string;
   artwork_images: any[];
-  artworkDetails: ArtworkDetail[];
+  positions: Position[];
 
   constructor(
     reference_number: string = '',
@@ -18,7 +18,7 @@ export class Artwork {
     description: string = '',
     note: string = '',
     artwork_images: any[] = [],
-    artworkDetails: ArtworkDetail[] = []
+    positions: Position[] = []
   ) {
     this.reference_number = reference_number;
     this.client_name = client_name;
@@ -27,6 +27,6 @@ export class Artwork {
     this.description = description;
     this.note = note;
     this.artwork_images = artwork_images;
-    this.artworkDetails = artworkDetails;
+    this.positions = positions;
   }
 }

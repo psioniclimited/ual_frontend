@@ -5,7 +5,8 @@ import { ArtworkService } from '../service/artwork.service';
 import { ArtworkDetail } from '../../_model/artwork-detail';
 import { FileUpload, MessageService } from 'primeng/primeng';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import {Position} from '../../_model/position';
+import { Position } from '../../_model/position';
+import {Combo} from '../../_model/combo';
 @Component({
   selector: 'app-artwork-form',
   templateUrl: './artwork-form.component.html',
@@ -22,7 +23,6 @@ export class ArtworkFormComponent implements OnInit {
   artworkForm: FormGroup;
   positions: Position[];
   selectedDivision: any;
-  // server data
   editArtwork: Artwork;
   server_date: Date;
 
@@ -44,42 +44,26 @@ export class ArtworkFormComponent implements OnInit {
       { field: 'd', header: 'Combo D' },
       { field: 'e', header: 'Combo E' }
     ];
-    this.positions = [
-      new Position
-    ];
+    this.positions = [new Position()];
   }
 
   ngOnInit() {
     // this.selectedDivision = { name: 'Women', value: '1' };
     this.editArtwork = new Artwork();
-    // this.route.params.subscribe((params: Params) => {
-    //   this.id = +params['id'];
-    //   if (this.id) {
-    //     this.artWorkService.show(this.id).subscribe(
-    //       data => {
-    //         this.editArtwork = data;
-    //         this.server_date = new Date(data.date);
-    //         this.positions.splice(0, 2);
-    //         this.selectedDivision = this.editArtwork.division;
-    //         for (let i = 0; i < this.editArtwork.positions.length; i++) {
-    //           var obj = {
-    //             position: this.editArtwork.positions[i].name
-    //           };
-    //           let combos = this.editArtwork.positions[i].combos;
-    //           for (let j = 0; j < combos.length; j++) {
-    //             let name = combos[j].name;
-    //             let color = combos[j].color;
-    //             obj[name] = color;
-    //           }
-    //           this.positions.push(obj);
-    //         }
-    //       },
-    //       error => {
-    //         console.log(error);
-    //       }
-    //     );
-    //   }
-    // });
+    this.route.params.subscribe((params: Params) => {
+      this.id = +params['id'];
+      if (this.id) {
+        this.artWorkService.show(this.id).subscribe(
+          data => {
+            this.editArtwork = data;
+            this.server_date = new Date(data.date);
+          },
+          error => {
+            console.log(error);
+          }
+        );
+      }
+    });
     this.initForm();
   }
 
@@ -118,14 +102,13 @@ export class ArtworkFormComponent implements OnInit {
           console.log(error);
         }
       );
-      console.log(artwork);
     } else {
       // call the store function
       this.artWorkService.store(artwork).subscribe(response => {
         this.fileInput.url =
           'http://localhost:8000/artwork/' + response + '/artwork_image';
         this.fileInput.upload();
-        this.router.navigate(['../artwork']);
+        // this.router.navigate(['../artwork']);
       });
     }
   }

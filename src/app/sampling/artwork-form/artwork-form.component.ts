@@ -6,7 +6,7 @@ import { ArtworkDetail } from '../../_model/artwork-detail';
 import { FileUpload, MessageService } from 'primeng/primeng';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Position } from '../../_model/position';
-import {Combo} from '../../_model/combo';
+import { Combo } from '../../_model/combo';
 @Component({
   selector: 'app-artwork-form',
   templateUrl: './artwork-form.component.html',
@@ -24,7 +24,7 @@ export class ArtworkFormComponent implements OnInit {
   positions: Position[];
   selectedDivision: any;
   editArtwork: Artwork;
-  server_date: Date;
+  serverDate: Date;
 
   constructor(
     private artWorkService: ArtworkService,
@@ -56,7 +56,22 @@ export class ArtworkFormComponent implements OnInit {
         this.artWorkService.show(this.id).subscribe(
           data => {
             this.editArtwork = data;
-            this.server_date = new Date(data.date);
+            this.serverDate = new Date(data.date);
+            const serverPosition = this.editArtwork.positions;
+            this.positions.splice(0, this.positions.length);
+            for (let i = 0; i < serverPosition.length; i++) {
+              const name = serverPosition[i].name;
+              const combos = serverPosition[i].combos;
+              const comboArray: Combo[] = [];
+              for (let j = 0; j < 5; j++) {
+                if (combos[j]) {
+                  comboArray.push(combos[j]);
+                } else {
+                  comboArray.push(new Combo());
+                }
+              }
+              this.positions.push(new Position(name, comboArray));
+            }
           },
           error => {
             console.log(error);

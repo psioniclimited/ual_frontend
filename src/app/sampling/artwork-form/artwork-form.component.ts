@@ -67,7 +67,13 @@ export class ArtworkFormComponent implements OnInit {
                 if (combos[j]) {
                   comboArray.push(combos[j]);
                 } else {
-                  comboArray.push(new Combo());
+                  let comboName = 'a';
+                  if (combos[j - 1]) {
+                    comboName = String.fromCharCode(
+                      combos[j - 1].name.charCodeAt(0) + 1
+                    );
+                  }
+                  comboArray.push(new Combo(comboName));
                 }
               }
               this.positions.push(new Position(name, comboArray));

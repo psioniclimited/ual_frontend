@@ -49,14 +49,19 @@
           {{rowData.name}}
         </td>
         <td>
-          <a *ngFor="let artwork_image of rowData.position.artwork.artwork_images" href="#">
+          <a
+            *ngFor="let artwork_image of rowData.position.artwork.artwork_images"
+            (click)="showArtworkImage(artwork_image.id)">
             {{artwork_image.filepath}}
           </a>
         </td>
         <td>
-          <button class="submit-color" name="basic" pButton type="button" (click)="editPermission(rowData.position.artwork['id'])" label="Edit"></button>
+          <button class="submit-color" name="basic" pButton type="button" (click)="editArtwork(rowData.position.artwork['id'])" label="Edit"></button>
         </td>
       </tr>
     </ng-template>
   </p-table>
+  <p-dialog header="Artwork Image" [(visible)]="artworkImageUrl">
+    <img [src]="artworkImageUrl">
+  </p-dialog>
 </p-card>

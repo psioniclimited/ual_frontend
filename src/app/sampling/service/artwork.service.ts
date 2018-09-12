@@ -40,4 +40,8 @@ export class ArtworkService {
   update(id: number, artwork: Artwork) {
     return this.http.put('/artwork/' + id, artwork);
   }
+
+  showArtworkImage(id: number) {
+    return this.http.get('/artwork_image/' + id);
+  }
 }

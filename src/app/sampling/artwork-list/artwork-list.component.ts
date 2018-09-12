@@ -12,14 +12,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ArtworkListComponent implements OnInit {
   @ViewChildren('dt')
   table;
-
   permissions: Paginate[];
-
   totalRecords: number;
-
   cols: any[];
-
   loading: boolean;
+  artworkImageUrl: string;
 
   constructor(
     private artworkService: ArtworkService,
@@ -35,9 +32,8 @@ export class ArtworkListComponent implements OnInit {
       { field: 'division', header: 'Division' },
       { field: 'description', header: 'Description' },
       { field: 'name', header: 'Combo' },
-      { field: 'files', header: 'Files' },
+      { field: 'files', header: 'Files' }
     ];
-
     this.loading = true;
   }
 
@@ -49,11 +45,14 @@ export class ArtworkListComponent implements OnInit {
       this.loading = false;
     });
   }
-
-  editPermission(id: number) {
+  editArtwork(id: number) {
     console.log(id);
     this.router.navigate(['../artwork/', id, 'edit'], {
       relativeTo: this.route
     });
+  }
+
+  showArtworkImage(id: number) {
+    this.artworkImageUrl = 'http://localhost:8000/artwork_image/' + id;
   }
 }

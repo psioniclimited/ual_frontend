@@ -37,7 +37,7 @@ export class RoleTableComponent implements OnInit {
   //   });
   // }
   //
-  // editPermission(id: number) {
+  // editArtwork(id: number) {
   //   this.router.navigate(['../permissions/', id , 'edit'], {relativeTo: this.route});
   // }
 

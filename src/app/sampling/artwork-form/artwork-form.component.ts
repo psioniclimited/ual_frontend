@@ -123,7 +123,7 @@ export class ArtworkFormComponent implements OnInit {
         this.fileInput.url =
           'http://localhost:8000/artwork/' + response + '/artwork_image';
         this.fileInput.upload();
-        // this.router.navigate(['../artwork']);
+        this.router.navigate(['../artwork']);
       });
     }
   }

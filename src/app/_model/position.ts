@@ -6,11 +6,11 @@ export class Position {
   constructor(
     name: string = 'A',
     combos: Combo[] = [
-      new Combo('red', 'blue'),
-      new Combo('white', 'gold'),
-      new Combo('', ''),
-      new Combo('', ''),
-      new Combo('', ''),
+      new Combo('a', 'blue'),
+      new Combo('b', 'gold'),
+      new Combo('c', ''),
+      new Combo('d', ''),
+      new Combo('e', ''),
     ]) {
     this.name = name;
     this.combos = combos;

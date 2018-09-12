@@ -41,10 +41,10 @@ export class ArtworkListComponent implements OnInit {
     this.loading = true;
   }
 
-  loadPermissionsLazy(event: LazyLoadEvent) {
-    this.artworkService.index(event).subscribe(permissions => {
-      this.totalRecords = permissions.total;
-      this.permissions = permissions.data;
+  loadArtworks(event: LazyLoadEvent) {
+    this.artworkService.index(event).subscribe(artworks => {
+      this.totalRecords = artworks.total;
+      this.permissions = artworks.data;
       console.log(this.permissions);
       this.loading = false;
     });

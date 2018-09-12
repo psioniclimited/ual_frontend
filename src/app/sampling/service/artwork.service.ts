@@ -33,12 +33,11 @@ export class ArtworkService {
     return this.http.get<Paginate>('/artwork', { params: params });
   }
 
-  show(id: number): Observable<Artwork>  {
+  show(id: number): Observable<Artwork> {
     return this.http.get<Artwork>('/artwork/' + id);
   }
 
   update(id: number, artwork: Artwork) {
     return this.http.put('/artwork/' + id, artwork);
   }
-
 }

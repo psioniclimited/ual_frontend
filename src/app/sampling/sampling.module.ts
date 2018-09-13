@@ -3,26 +3,26 @@ import { CommonModule } from '@angular/common';
 
 import { SamplingRoutingModule } from './sampling-routing.module';
 import { ArtworkFormComponent } from './artwork-form/artwork-form.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {CardModule} from 'primeng/card';
-import {InputTextModule} from 'primeng/inputtext';
-import {ButtonModule} from 'primeng/button';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CardModule } from 'primeng/card';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
 import {
   CalendarModule,
-  ColorPickerModule, DialogModule,
+  ColorPickerModule,
+  DialogModule,
   DropdownModule,
   FileUploadModule,
-  InputTextareaModule,
-  LightboxModule,
+  InputTextareaModule, OverlayPanelModule,
   TabMenuModule
 } from 'primeng/primeng';
-import {TableModule} from 'primeng/table';
+import { TableModule } from 'primeng/table';
 import { TableWorkComponent } from './artwork-form/table-work/table-work.component';
 import { SampleCardFormComponent } from './sample-card-form/sample-card-form.component';
 import { ArtworkListComponent } from './artwork-list/artwork-list.component';
 import { ArtworkComponent } from './artwork/artwork.component';
-import {GrowlModule} from 'primeng/growl';
-
+import { GrowlModule } from 'primeng/growl';
+import { ArtworkImageTableComponent } from './artwork-form/artwork-image-table/artwork-image-table.component';
 
 @NgModule({
   imports: [
@@ -42,8 +42,16 @@ import {GrowlModule} from 'primeng/growl';
     FileUploadModule,
     TabMenuModule,
     GrowlModule,
-    DialogModule
+    DialogModule,
+    OverlayPanelModule
   ],
-  declarations: [ArtworkFormComponent, TableWorkComponent, SampleCardFormComponent, ArtworkListComponent, ArtworkComponent]
+  declarations: [
+    ArtworkFormComponent,
+    TableWorkComponent,
+    SampleCardFormComponent,
+    ArtworkListComponent,
+    ArtworkComponent,
+    ArtworkImageTableComponent
+  ]
 })
-export class SamplingModule { }
+export class SamplingModule {}

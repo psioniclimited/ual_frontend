@@ -1,9 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { Artwork } from '../../_model/artwork';
 import { ArtworkService } from '../service/artwork.service';
-import { ArtworkDetail } from '../../_model/artwork-detail';
-import { FileUpload, MessageService } from 'primeng/primeng';
+import { FileUpload } from 'primeng/primeng';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Position } from '../../_model/position';
 import { Combo } from '../../_model/combo';
@@ -22,9 +21,9 @@ export class ArtworkFormComponent implements OnInit {
   cols: any[];
   artworkForm: FormGroup;
   positions: Position[];
-  selectedDivision: any;
   editArtwork: Artwork;
   serverDate: Date;
+  images: any[] = [];
 
   constructor(
     private artWorkService: ArtworkService,
@@ -48,7 +47,6 @@ export class ArtworkFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.selectedDivision = { name: 'Women', value: '1' };
     this.editArtwork = new Artwork();
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
@@ -56,6 +54,7 @@ export class ArtworkFormComponent implements OnInit {
         this.artWorkService.show(this.id).subscribe(
           data => {
             this.editArtwork = data;
+            this.images = this.editArtwork.artwork_images;
             this.serverDate = new Date(data.date);
             const serverPosition = this.editArtwork.positions;
             this.positions.splice(0, this.positions.length);

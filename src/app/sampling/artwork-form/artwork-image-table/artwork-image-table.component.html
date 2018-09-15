@@ -10,7 +10,7 @@
       </th>
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-rowData let-columns="columns">
+  <ng-template pTemplate="body" let-rowData let-columns="columns" let-rowIndex="rowIndex">
     <tr>
       <td>
         <button type="button" pButton (click)="selectImage($event, rowData.id,op3)"  icon="pi pi-search"></button>
@@ -20,7 +20,7 @@
         {{rowData.filepath}}
       </td>
       <td>
-        <p-button label="Click" ></p-button>
+        <p-button label="Remove" (onClick)="removeImage(rowIndex)"></p-button>
       </td>
     </tr>
   </ng-template>

@@ -110,13 +110,15 @@ export class ArtworkFormComponent implements OnInit {
       this.artwork_images,
       this.positions
     );
-    // console.log(this.artwork_images);
 
     if (this.id) {
       // call the update function
       this.artWorkService.update(this.id, artwork).subscribe(
         response => {
           this.router.navigate(['../artwork']);
+          this.fileInput.url =
+            'http://localhost:8000/artwork/' + this.id + '/artwork_image';
+          this.fileInput.upload();
         },
         error => {
           console.log(error);

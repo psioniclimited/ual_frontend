@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { OverlayPanel } from 'primeng/primeng';
+import {ArtworkService} from '../../service/artwork.service';
 
 @Component({
   selector: 'app-artwork-image-table',
@@ -11,17 +12,31 @@ export class ArtworkImageTableComponent implements OnInit {
   artworkImages: any[];
 
   selectedImageUrl: string;
+  display = false;
+  index = 0;
+  id = 0;
 
-  constructor() {}
+  constructor(private artworkService: ArtworkService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.artworkImages);
+  }
 
   selectImage(event, id: number, overlaypanel: OverlayPanel) {
     this.selectedImageUrl = 'http://localhost:8000/artwork_image/' + id;
     overlaypanel.toggle(event);
   }
 
-  removeImage(index) {
-    this.artworkImages.splice(index, 1);
+  showDialog(index, id) {
+    this.display = true;
+    this.index = index;
+    this.id = id;
+  }
+
+  removeImage() {
+    console.log(this.id);
+    this.artworkService.deleteArtworkImage(this.id).subscribe();
+    this.artworkImages.splice(this.index, 1);
+    this.display = false;
   }
 }

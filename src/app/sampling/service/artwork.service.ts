@@ -44,4 +44,8 @@ export class ArtworkService {
   showArtworkImage(id: number) {
     return this.http.get('/artwork_image/' + id);
   }
+
+  deleteArtworkImage(id: number) {
+    return this.http.delete('/artwork_image/' + id);
+  }
 }

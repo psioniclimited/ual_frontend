@@ -6,9 +6,10 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { AuthService } from '../shared/service/auth.service';
 import { MessageService } from 'primeng/api';
+import { Response } from '@angular/http';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
@@ -38,8 +39,10 @@ export class ErrorInterceptor implements HttpInterceptor {
           let details = '';
           const errors = err.error;
           for (const er in errors['errors']) {
-            console.log(errors['errors'][er]);
-            details += errors['errors'][er][0] + ' ';
+            if (er) {
+              console.log(errors['errors'][er]);
+              details += errors['errors'][er][0] + ' ';
+            }
           }
           this.messageService.add({
             severity: 'error',

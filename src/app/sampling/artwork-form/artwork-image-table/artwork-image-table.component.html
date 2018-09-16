@@ -20,7 +20,7 @@
         {{rowData.filepath}}
       </td>
       <td>
-        <p-button label="Remove" (onClick)="removeImage(rowIndex)"></p-button>
+        <p-button type="button" label="Remove" (onClick)="showDialog(rowIndex, rowData.id)"></p-button>
       </td>
     </tr>
   </ng-template>
@@ -29,3 +29,12 @@
 <p-overlayPanel #op3>
   <img src="{{selectedImageUrl}}" *ngIf="selectedImageUrl"/>
 </p-overlayPanel>
+
+<p-dialog header="Images" [(visible)]="display" [modal]="true" [responsive]="true" [width]="350" [minWidth]="200" [minY]="70"
+          [maximizable]="true" [baseZIndex]="10000">
+    <span>Are you sure you want to remove this?</span>
+  <p-footer>
+    <button type="button" pButton icon="pi pi-check" (click)="removeImage()" label="Yes"></button>
+    <button type="button" pButton icon="pi pi-close" (click)="display=false" label="No" class="ui-button-secondary"></button>
+  </p-footer>
+</p-dialog>

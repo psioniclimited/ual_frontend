@@ -6,6 +6,7 @@ import { FileUpload } from 'primeng/primeng';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Position } from '../../_model/position';
 import { Combo } from '../../_model/combo';
+import {environment} from '../../../environments/environment';
 @Component({
   selector: 'app-artwork-form',
   templateUrl: './artwork-form.component.html',
@@ -116,8 +117,8 @@ export class ArtworkFormComponent implements OnInit {
       this.artWorkService.update(this.id, artwork).subscribe(
         response => {
           this.router.navigate(['../artwork']);
-          this.fileInput.url =
-            'http://localhost:8000/artwork/' + this.id + '/artwork_image';
+          this.fileInput.url = environment.api_url +
+            '/artwork/' + this.id + '/artwork_image';
           this.fileInput.upload();
         },
         error => {
@@ -127,8 +128,8 @@ export class ArtworkFormComponent implements OnInit {
     } else {
       // call the store function
       this.artWorkService.store(artwork).subscribe(response => {
-        this.fileInput.url =
-          'http://localhost:8000/artwork/' + response + '/artwork_image';
+        this.fileInput.url = environment.api_url +
+          '/artwork/' + response + '/artwork_image';
         this.fileInput.upload();
         this.router.navigate(['../artwork']);
       });

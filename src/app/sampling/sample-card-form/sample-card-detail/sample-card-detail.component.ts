@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewChildren} from '@angular/core';
+import { Component, Input, OnInit, ViewChildren } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -12,12 +12,15 @@ export class SampleCardDetailComponent implements OnInit {
   cols: any[];
   @Input()
   cardDetails: any[];
-  @ViewChildren('dt') table;
-  constructor() { }
+  @ViewChildren('dt')
+  table;
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  addPosition(event) {
+  addPosition(event) {}
+
+  onDelete(index) {
+    this.cardDetails.splice(index, 1);
   }
 }

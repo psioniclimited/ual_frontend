@@ -52,12 +52,9 @@
             {{ rowData.dan }}
           </ng-template>
         </p-cellEditor>
-
       </td>
-
-
       <td>
-        <button class="submit-color" name="basic" pButton type="button"  label="Delete"></button>
+        <button class="submit-color" name="basic" pButton type="button"  label="Delete" (click)="onDelete(rowIndex)"></button>
       </td>
     </tr>
   </ng-template>

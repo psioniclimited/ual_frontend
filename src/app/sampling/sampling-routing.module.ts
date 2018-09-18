@@ -1,21 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ArtworkFormComponent } from './artwork-form/artwork-form.component';
-import {SampleCardFormComponent} from './sample-card-form/sample-card-form.component';
-import {ArtworkListComponent} from './artwork-list/artwork-list.component';
-import {ArtworkComponent} from './artwork/artwork.component';
+import { SampleCardFormComponent } from './sample-card-form/sample-card-form.component';
+import { ArtworkListComponent } from './artwork-list/artwork-list.component';
+import { ArtworkComponent } from './artwork/artwork.component';
 
 const routes: Routes = [
-  { path: 'artwork', component: ArtworkListComponent },
-  { path: 'artwork/create', component: ArtworkFormComponent },
   { path: 'sample-card/create', component: SampleCardFormComponent },
   {
     path: 'artwork',
     component: ArtworkComponent,
     children: [
       { path: '', component: ArtworkListComponent },
-      { path: 'create', component: ArtworkFormComponent},
-      { path: ':id/edit', component: ArtworkFormComponent},
+      { path: 'create', component: ArtworkFormComponent },
+      { path: ':id/edit', component: ArtworkFormComponent }
     ]
   }
 ];

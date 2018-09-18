@@ -62,7 +62,7 @@ export class PermissionTableComponent implements OnInit, OnDestroy {
   }
 
   editPermission(id: number) {
-    this.router.navigate(['../permissions/', id, 'edit'], {
+    this.router.navigate(['../artworkList/', id, 'edit'], {
       relativeTo: this.route
     });
   }

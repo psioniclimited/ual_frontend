@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {MenuItem} from 'primeng/api';
+import { MenuItem } from 'primeng/api';
+import { ArtworkDataService } from '../service/artwork-data.service';
 
 @Component({
   selector: 'app-sample-card-form',
@@ -7,19 +8,27 @@ import {MenuItem} from 'primeng/api';
   styleUrls: ['./sample-card-form.component.scss']
 })
 export class SampleCardFormComponent implements OnInit {
+  clientName = '';
+  combos: any[];
+  constructor(private artworkDataService: ArtworkDataService) {}
+  artworks: any[];
 
-  items: MenuItem[];
+  ngOnInit() {}
 
-
-  constructor() { }
-
-  ngOnInit() {
-    this.items = [
-      {label: 'Woven Label', icon: 'fa fa-fw fa-bar-chart',
-        routerLink: '/artwork/create'},
-    ];
+  filterArtwork(event) {
+    console.log(event.query);
+    // this.artworkData = [];
+    this.artworkDataService.index(event).subscribe(
+      data => {
+        this.artworks = data.data;
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
-
-
+  selectArtwork(event) {
+    this.clientName = event.client_name;
+  }
 }

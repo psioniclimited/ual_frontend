@@ -24,7 +24,7 @@ const routes: Routes = [
     component: UserTableComponent
   },
   {
-    path: 'permissions',
+    path: 'artworkList',
     component: PermissionComponent,
     children: [
       { path: '', component: PermissionFormComponent },

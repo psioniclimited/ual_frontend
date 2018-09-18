@@ -3,6 +3,7 @@ import { ArtworkService } from '../service/artwork.service';
 import { Paginate } from '../../_model/paginate';
 import { LazyLoadEvent } from 'primeng/api';
 import { ActivatedRoute, Router } from '@angular/router';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-artwork-list',
@@ -12,7 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ArtworkListComponent implements OnInit {
   @ViewChildren('dt')
   table;
-  permissions: Paginate[];
+  artworkList: Paginate[];
   totalRecords: number;
   cols: any[];
   loading: boolean;
@@ -40,8 +41,7 @@ export class ArtworkListComponent implements OnInit {
   loadArtworks(event: LazyLoadEvent) {
     this.artworkService.index(event).subscribe(artworks => {
       this.totalRecords = artworks.total;
-      this.permissions = artworks.data;
-      console.log(this.permissions);
+      this.artworkList = artworks.data;
       this.loading = false;
     });
   }
@@ -53,6 +53,6 @@ export class ArtworkListComponent implements OnInit {
   }
 
   showArtworkImage(id: number) {
-    this.artworkImageUrl = 'http://localhost:8000/artwork_image/' + id;
+    this.artworkImageUrl =  environment.api_url + '/artwork_image/' + id;
   }
 }

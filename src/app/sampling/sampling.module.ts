@@ -8,6 +8,7 @@ import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import {
+  AutoCompleteModule,
   CalendarModule,
   ColorPickerModule,
   DialogModule,
@@ -23,6 +24,7 @@ import { ArtworkListComponent } from './artwork-list/artwork-list.component';
 import { ArtworkComponent } from './artwork/artwork.component';
 import { GrowlModule } from 'primeng/growl';
 import { ArtworkImageTableComponent } from './artwork-form/artwork-image-table/artwork-image-table.component';
+import {SampleCardDetailComponent} from './sample-card-form/sample-card-detail/sample-card-detail.component';
 
 @NgModule({
   imports: [
@@ -43,7 +45,8 @@ import { ArtworkImageTableComponent } from './artwork-form/artwork-image-table/a
     TabMenuModule,
     GrowlModule,
     DialogModule,
-    OverlayPanelModule
+    OverlayPanelModule,
+    AutoCompleteModule
   ],
   declarations: [
     ArtworkFormComponent,
@@ -51,7 +54,8 @@ import { ArtworkImageTableComponent } from './artwork-form/artwork-image-table/a
     SampleCardFormComponent,
     ArtworkListComponent,
     ArtworkComponent,
-    ArtworkImageTableComponent
+    ArtworkImageTableComponent,
+    SampleCardDetailComponent
   ]
 })
 export class SamplingModule {}

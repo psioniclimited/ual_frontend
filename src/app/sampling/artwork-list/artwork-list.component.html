@@ -2,7 +2,7 @@
   <p-table
     #dt
     [columns]="cols"
-    [value]="permissions"
+    [value]="artworkList"
     [lazy]="true"
     (onLazyLoad)="loadArtworks($event)"
     [paginator]="true"

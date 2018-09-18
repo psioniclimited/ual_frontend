@@ -19,15 +19,7 @@ export class SampleCards {
     description: string = '',
     date: string = '',
     note: string = '',
-    sampleCardDetails: SampleCardDetails[] = [
-      new SampleCardDetails('1', '#fff', 'art', 'testing'),
-      new SampleCardDetails('2', '#fff', 'art', 'testing'),
-      new SampleCardDetails('3', '#fff', 'art', 'testing'),
-      new SampleCardDetails('4', '#fff', 'art', 'testing'),
-      new SampleCardDetails('5', '#fff', 'art', 'testing'),
-      new SampleCardDetails('6', '#fff', 'art', 'testing'),
-      new SampleCardDetails('7', '#fff', 'art', 'testing')
-    ]
+    sampleCardDetails: SampleCardDetails[]
   ) {
     this.picks = picks;
     this.repeats = repeats;

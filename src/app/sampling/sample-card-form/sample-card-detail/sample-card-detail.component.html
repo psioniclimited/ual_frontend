@@ -15,16 +15,13 @@
   </ng-template>
   <ng-template pTemplate="body" let-rowData let-columns="columns" let-rowIndex="rowIndex">
     <tr>
-      <td>
-        {{rowData.empty}}
-      </td>
       <td pEditableColumn>
         <p-cellEditor>
           <ng-template pTemplate="input" class="ui-g">
-            <input type="text" [(ngModel)]="rowData.serial" name="columns" class="ui-g-4">
+            <input type="text" [(ngModel)]="rowData.sn" name="columns" class="ui-g-4">
           </ng-template>
           <ng-template pTemplate="output">
-            {{ rowData.serial }}
+            {{ rowData.sn }}
           </ng-template>
         </p-cellEditor>
       </td>

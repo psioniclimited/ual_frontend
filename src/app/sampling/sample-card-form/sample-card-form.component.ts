@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { ArtworkDataService } from '../service/artwork-data.service';
 import {environment} from '../../../environments/environment';
+import {SampleCardDetails} from '../../_model/sample-card-details';
 
 @Component({
   selector: 'app-sample-card-form',
@@ -17,28 +18,30 @@ export class SampleCardFormComponent implements OnInit {
   artworks: any[];
   artworkImages: any[];
   cols: any[];
-  cardDetails: any[];
+  cardDetails: SampleCardDetails[];
   ngOnInit() {
     this.items = [
       {label: 'Woven Label', icon: 'fa fa-fw fa-bar-chart',
         routerLink: '/artwork/create'},
     ];
     this.cols = [
-      { field: '', header: '' },
       { field: 'serial', header: 'Serial' },
       { field: 'colour', header: 'Colour' },
       { field: 'art', header: 'Art #' },
       { field: 'dan', header: 'DAN' }
     ];
     this.cardDetails = [
-      { empty: '', serial: '1', color: '#fff', art: 'art', dan: 'testing' },
-      { empty: '', serial: '2', color: '#fff', art: 'art', dan: 'testing' },
+      new SampleCardDetails('1', '#fff', 'art', 'testing'),
+      new SampleCardDetails('2', '#fff', 'art', 'testing'),
+      new SampleCardDetails('3', '#fff', 'art', 'testing'),
+      new SampleCardDetails('4', '#fff', 'art', 'testing'),
+      new SampleCardDetails('5', '#fff', 'art', 'testing'),
+      new SampleCardDetails('6', '#fff', 'art', 'testing'),
+      new SampleCardDetails('7', '#fff', 'art', 'testing')
     ];
   }
 
   filterArtwork(event) {
-    console.log(event.query);
-    // this.artworkData = [];
     this.artworkDataService.index(event).subscribe(
       data => {
         this.artworks = data.data;

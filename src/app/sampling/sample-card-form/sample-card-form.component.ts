@@ -30,5 +30,7 @@ export class SampleCardFormComponent implements OnInit {
 
   selectArtwork(event) {
     this.clientName = event.client_name;
+    this.combos = event.combos;
+    console.log(this.combos);
   }
 }

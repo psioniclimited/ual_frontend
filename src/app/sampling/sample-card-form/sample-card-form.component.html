@@ -11,6 +11,7 @@
           (onSelect)="selectArtwork($event)"
           [size]="30"
           [minLength]="1"
+          id="reference_number"
           name="reference_number"
           placeholder="Hint: type 'v' or 'f'"
           [dropdown]="true"
@@ -43,15 +44,20 @@
     <div class="ui-md-3 ui-g-3 form-group ">
       <div class="  ">
         <label for="combo">Combo</label>
-        <p-dropdown [options]="artworks"
-                    placeholder="Select a Reference number"
+        <p-dropdown [options]="combos"
                     optionLabel="name"
                     id="combo"
                     name="combo"
                     [style]="{'width':'100%'}"
-                    [showClear]="true"
-                    filter="true"
-                    >
+                    [showClear]="true">
+          <ng-template let-item pTemplate="selectedItem">
+            <span style="vertical-align:middle">{{item.label}}</span>
+          </ng-template>
+          <ng-template let-combo pTemplate="item">
+            <div class="ui-helper-clearfix" style="position: relative;height: 25px;">
+              <div style="font-size:14px;float:right;margin-top:4px">{{combo.label}}</div>
+            </div>
+          </ng-template>
         </p-dropdown>
       </div>
     </div>

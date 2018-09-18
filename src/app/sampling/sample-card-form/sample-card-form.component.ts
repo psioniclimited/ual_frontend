@@ -9,13 +9,32 @@ import {environment} from '../../../environments/environment';
   styleUrls: ['./sample-card-form.component.scss']
 })
 export class SampleCardFormComponent implements OnInit {
+  items: MenuItem[];
   clientName = '';
   combos: any[];
   artworkImageUrl: string;
   constructor(private artworkDataService: ArtworkDataService) {}
   artworks: any[];
   artworkImages: any[];
-  ngOnInit() {}
+  cols: any[];
+  cardDetails: any[];
+  ngOnInit() {
+    this.items = [
+      {label: 'Woven Label', icon: 'fa fa-fw fa-bar-chart',
+        routerLink: '/artwork/create'},
+    ];
+    this.cols = [
+      { field: '', header: '' },
+      { field: 'serial', header: 'Serial' },
+      { field: 'colour', header: 'Colour' },
+      { field: 'art', header: 'Art #' },
+      { field: 'dan', header: 'DAN' }
+    ];
+    this.cardDetails = [
+      { empty: '', serial: '1', color: '#fff', art: 'art', dan: 'testing' },
+      { empty: '', serial: '2', color: '#fff', art: 'art', dan: 'testing' },
+    ];
+  }
 
   filterArtwork(event) {
     console.log(event.query);
@@ -33,13 +52,9 @@ export class SampleCardFormComponent implements OnInit {
   selectArtwork(event) {
     this.clientName = event.client_name;
     this.combos = event.combos;
-    console.log(event);
     this.artworkImages = event.artwork_images;
-    console.log(this.artworkImages);
-    // this.artworkImageUrl =  environment.api_url + '/artwork_image/' + id;
   }
   showArtworkImage(id: number) {
-    console.log(id);
     this.artworkImageUrl =  environment.api_url + '/artwork_image/' + id;
   }
 }

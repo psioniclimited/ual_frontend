@@ -1,42 +1,69 @@
+<p-table
+  #dt
+  [columns]="cols"
+  [value]="cardDetails">
 
-  <p-table
-    #dt
-    [columns]="cols"
-    [value]="permissions"
-    [paginator]="true"
-    [rows]="10"
-    [rowsPerPageOptions]="[10,20,30]"
-    [totalRecords]="totalRecords"
-    [value]="CardDetails">
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+        {{col.header}}
+      </th>
+      <th>
+        Delete
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData let-columns="columns" let-rowIndex="rowIndex">
+    <tr>
+      <td>
+        {{rowData.empty}}
+      </td>
+      <td pEditableColumn>
+        <p-cellEditor>
+          <ng-template pTemplate="input" class="ui-g">
+            <input type="text" [(ngModel)]="rowData.serial" name="columns" class="ui-g-4">
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{ rowData.serial }}
+          </ng-template>
+        </p-cellEditor>
+      </td>
+      <td pEditableColumn>
+        <p-cellEditor>
+          <ng-template pTemplate="input" class="ui-g">
+            <input type="text" [(ngModel)]="rowData.color" name="columns" class="ui-g-4">
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{ rowData.color }}
+          </ng-template>
+        </p-cellEditor>
+      <td pEditableColumn>
+        <p-cellEditor>
+          <ng-template pTemplate="input" class="ui-g">
+            <input type="text" [(ngModel)]="rowData.art" name="columns" class="ui-g-4">
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{ rowData.art }}
+          </ng-template>
+        </p-cellEditor>
+      <td pEditableColumn>
+        <p-cellEditor>
+          <ng-template pTemplate="input" class="ui-g">
+            <input type="text" [(ngModel)]="rowData.dan" name="columns" class="ui-g-4">
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{ rowData.dan }}
+          </ng-template>
+        </p-cellEditor>
 
-    <!--<ng-template pTemplate="caption">-->
-    <!--<div style="text-align: right">-->
-    <!--<i class="fa fa-search" style="margin:4px 4px 0 0"></i>-->
-    <!--<input type="text" pInputText size="50" placeholder="Global Filter"-->
-    <!--(input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">-->
-    <!--</div>-->
-    <!--</ng-template>-->
+      </td>
 
-    <ng-template pTemplate="header" let-columns>
-      <tr>
-        <th style="width: 40%;">Sample</th>
-        <th *ngFor="let col of columns" [pSortableColumn]="col.field">
-          {{col.header}}
-          <p-sortIcon [field]="col.field"></p-sortIcon>
-        </th>
 
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-rowData let-columns="columns">
-      <!--<tr>-->
-      <!--<td *ngFor="let col of columns" >-->
-      <!--{{rowData[col.field]}}-->
-      <!--</td>-->
-      <!--<td>-->
-      <!--<button class="submit-color" name="basic" pButton type="button" (click)="editPermission(rowData['id'])" label="Edit"></button>-->
-      <!--</td>-->
-      <!--</tr>-->
-    </ng-template>
-  </p-table>
+      <td>
+        <button class="submit-color" name="basic" pButton type="button"  label="Delete"></button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
   <p-button label="Add Row" (onClick)="addPosition($event)"></p-button>
 

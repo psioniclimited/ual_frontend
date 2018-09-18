@@ -30,8 +30,6 @@
         <p-cellEditor>
           <ng-template pTemplate="input" class="ui-g">
             <input type="text" [(ngModel)]="combo.color" name="columns" class="ui-g-4">
-            <!--<p-colorPicker *ngIf="col.field !== 'position'" [(ngModel)]="color" class="ui-g-4"></p-colorPicker>-->
-            <!--<p class="ui-g-4" *ngIf="col.field !== 'position'" style="margin-top:.5em">Selected Color: <span [ngStyle]="{'color':color}">{{color}}</span></p>-->
           </ng-template>
           <ng-template pTemplate="output">
             {{ combo.color }}

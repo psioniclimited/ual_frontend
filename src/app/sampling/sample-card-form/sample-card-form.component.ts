@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { ArtworkDataService } from '../service/artwork-data.service';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-sample-card-form',
@@ -10,9 +11,10 @@ import { ArtworkDataService } from '../service/artwork-data.service';
 export class SampleCardFormComponent implements OnInit {
   clientName = '';
   combos: any[];
+  artworkImageUrl: string;
   constructor(private artworkDataService: ArtworkDataService) {}
   artworks: any[];
-
+  artworkImages: any[];
   ngOnInit() {}
 
   filterArtwork(event) {
@@ -31,6 +33,13 @@ export class SampleCardFormComponent implements OnInit {
   selectArtwork(event) {
     this.clientName = event.client_name;
     this.combos = event.combos;
-    console.log(this.combos);
+    console.log(event);
+    this.artworkImages = event.artwork_images;
+    console.log(this.artworkImages);
+    // this.artworkImageUrl =  environment.api_url + '/artwork_image/' + id;
+  }
+  showArtworkImage(id: number) {
+    console.log(id);
+    this.artworkImageUrl =  environment.api_url + '/artwork_image/' + id;
   }
 }

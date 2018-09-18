@@ -36,9 +36,11 @@
     <div class="ui-md-3 ui-g-3  form-group ">
       <div class="  ">
         <label for="file_name">File Name</label>
-        <input type="text" id="file_name" class="form-control"
-               pInputText placeholder="Enter file name"
-               name="file_name" >
+        <a
+          *ngFor="let artwork_image of artworkImages"
+          (click)="showArtworkImage(artwork_image.id)">
+          {{artwork_image.filepath}}
+        </a>
       </div>
     </div>
     <div class="ui-md-3 ui-g-3 form-group ">
@@ -129,4 +131,7 @@
     <button class="submit-color" name="basic" pButton type="submit" label="Submit"></button>
 
   </form>
+  <p-dialog header="Artwork Image" [(visible)]="artworkImageUrl">
+    <img [src]="artworkImageUrl">
+  </p-dialog>
 </p-card>

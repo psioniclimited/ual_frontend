@@ -1,26 +1,20 @@
 <p-tabMenu [model]="items"></p-tabMenu>
 
 <p-card>
-  <form class=" ui-fluid ui-g" >
+  <form class=" ui-fluid ui-g" [formGroup]="sampleCardForm">
     <div class="ui-md-3 ui-g-3 form-group ">
       <div class="">
-        <label for="reference_number">Reference No</label>
+        <label for="artwork_id">Reference No</label>
         <p-autoComplete
+          [(ngModel)]="editSampleCard.artwork_id"
           [suggestions]="artworks"
           (completeMethod)="filterArtwork($event)"
           (onSelect)="selectArtwork($event)"
-          [size]="30"
-          [minLength]="1"
-          id="reference_number"
-          name="reference_number"
-          placeholder="Hint: type 'v' or 'f'"
+          field="reference_number" [size]="15"
+          placeholder="Hint: type a reference number"
+          formControlName="artwork_id"
           [dropdown]="true"
-          field="reference_number">
-          <ng-template let-artwork pTemplate="item">
-            <div class="ui-helper-clearfix" style="border-bottom:1px solid #D5D5D5">
-              <div style="font-size:18px;float:right;margin:10px 10px 0 0">{{artwork.reference_number}}</div>
-            </div>
-          </ng-template>
+          [minLength]="1">
         </p-autoComplete>
       </div>
     </div>
@@ -30,7 +24,7 @@
         <input type="text" id="client" class="form-control"
                pInputText placeholder="Enter Client"
                name="client"
-               [(ngModel)]="clientName">
+               [value]="clientName">
       </div>
     </div>
     <div class="ui-md-3 ui-g-3  form-group ">
@@ -57,7 +51,7 @@
           </ng-template>
           <ng-template let-combo pTemplate="item">
             <div class="ui-helper-clearfix" style="position: relative;height: 25px;">
-              <div style="font-size:14px;float:right;margin-top:4px">{{combo.label}}</div>
+              <div style="font-size:14px;margin-top:4px">{{combo.label}}</div>
             </div>
           </ng-template>
         </p-dropdown>
@@ -68,7 +62,7 @@
         <label for="picks">Picks</label>
         <input type="text" id="picks" class="form-control"
                pInputText placeholder="Enter picks"
-               name="combo" >
+               name="combo" formControlName="picks" [ngModel]="editSampleCard.picks">
       </div>
     </div>
     <div class="ui-md-2 ui-g-2 form-group ">
@@ -76,7 +70,7 @@
         <label for="repeats">Repeats/HR</label>
         <input type="text" id="repeats" class="form-control"
                pInputText placeholder="Enter repeats"
-               name="repeats" >
+               name="repeats" formControlName="picks" [ngModel]="editSampleCard.repeats">
       </div>
     </div>
     <div class="ui-md-3 ui-g-3 form-group ">
@@ -84,7 +78,7 @@
         <label for="width">Width</label>
         <input type="text" id="width" class="form-control"
                pInputText placeholder="Enter width"
-               name="width" >
+               name="width" formControlName="width" [ngModel]="editSampleCard.width">
       </div>
     </div>
     <div class="ui-md-3 ui-g-3 form-group ">
@@ -92,7 +86,7 @@
         <label for="length">Length</label>
         <input type="text" id="length" class="form-control"
                pInputText placeholder="Enter length"
-               name="length" >
+               name="length" formControlName="length" [ngModel]="editSampleCard.length">
       </div>
     </div>
     <div class="ui-md-2 ui-g-2 form-group ">
@@ -100,7 +94,7 @@
         <label for="ttl_picks">TTL Picks</label>
         <input type="text" id="ttl_picks" class="form-control"
                pInputText placeholder="Enter TTL picks"
-               name="ttl_picks" >
+               name="ttl_picks" formControlName="ttl_picks" [ngModel]="editSampleCard.ttl_picks">
       </div>
     </div>
     <div class="ui-md-9 ui-g-9 form-group ">
@@ -108,13 +102,14 @@
         <label for="label_desc">Label Description</label>
         <input type="text" id="label_desc" class="form-control"
                pInputText placeholder="Enter label description"
-               name="label_desc" >
+               name="label_desc" formControlName="description" [ngModel]="editSampleCard.description">
       </div>
     </div>
     <div class="ui-md-3 ui-g-3 form-group ">
       <div class="  ">
         <label for="date">Date</label>
-        <p-calendar  placeholder="Enter date"></p-calendar>
+        <p-calendar placeholder="Enter date"
+                    ></p-calendar>
       </div>
     </div>
 
@@ -128,13 +123,13 @@
         <label for="note">Note</label>
         <input type="text" id="note" class="form-control"
                pInputText placeholder="Enter note"
-               name="note" >
+               name="note" formControlName="note" [ngModel]="editSampleCard.note">
       </div>
     </div>
     <button class="submit-color" name="basic" pButton type="submit" label="Submit"></button>
 
   </form>
   <p-dialog header="Artwork Image" [(visible)]="artworkImageUrl">
-    <img [src]="artworkImageUrl">
+    <img *ngIf="artworkImageUrl" [src]="artworkImageUrl">
   </p-dialog>
 </p-card>

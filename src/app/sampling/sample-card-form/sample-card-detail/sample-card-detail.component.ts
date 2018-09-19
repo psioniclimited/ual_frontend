@@ -1,5 +1,7 @@
 import { Component, Input, OnInit, ViewChildren } from '@angular/core';
 import { Subscription } from 'rxjs';
+import {Position} from '../../../_model/position';
+import {SampleCardDetails} from '../../../_model/sample-card-details';
 
 @Component({
   selector: 'app-sample-card-detail',
@@ -18,7 +20,9 @@ export class SampleCardDetailComponent implements OnInit {
 
   ngOnInit() {}
 
-  addPosition(event) {}
+  addPosition(event) {
+    this.cardDetails.push(new SampleCardDetails());
+  }
 
   onDelete(index) {
     this.cardDetails.splice(index, 1);

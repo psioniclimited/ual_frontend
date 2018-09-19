@@ -1,7 +1,7 @@
 <p-tabMenu [model]="items"></p-tabMenu>
 
 <p-card>
-  <form class=" ui-fluid ui-g" [formGroup]="sampleCardForm">
+  <form class=" ui-fluid ui-g" [formGroup]="sampleCardForm" (ngSubmit)="onSubmit()">
     <div class="ui-md-3 ui-g-3 form-group ">
       <div class="">
         <label for="artwork_id">Reference No</label>
@@ -70,7 +70,7 @@
         <label for="repeats">Repeats/HR</label>
         <input type="text" id="repeats" class="form-control"
                pInputText placeholder="Enter repeats"
-               name="repeats" formControlName="picks" [ngModel]="editSampleCard.repeats">
+               name="repeats" formControlName="repeats" [ngModel]="editSampleCard.repeats">
       </div>
     </div>
     <div class="ui-md-3 ui-g-3 form-group ">
@@ -100,16 +100,26 @@
     <div class="ui-md-9 ui-g-9 form-group ">
       <div class="  ">
         <label for="label_desc">Label Description</label>
-        <input type="text" id="label_desc" class="form-control"
-               pInputText placeholder="Enter label description"
-               name="label_desc" formControlName="description" [ngModel]="editSampleCard.description">
+        <input type="text"
+               id="label_desc"
+               class="form-control"
+               pInputText
+               placeholder="Enter label description"
+               name="label_desc"
+               formControlName="description"
+               [ngModel]="editSampleCard.description">
       </div>
     </div>
     <div class="ui-md-3 ui-g-3 form-group ">
       <div class="  ">
         <label for="date">Date</label>
-        <p-calendar placeholder="Enter date"
-                    ></p-calendar>
+        <p-calendar [monthNavigator]="true"
+                    [yearNavigator]="true"
+                    yearRange="2000:2030"
+                    dateFormat="dd-mm-yy"
+                    id="date"
+                    name="date"
+                    formControlName="date"></p-calendar>
       </div>
     </div>
 

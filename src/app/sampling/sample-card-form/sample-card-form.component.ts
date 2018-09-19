@@ -23,6 +23,8 @@ export class SampleCardFormComponent implements OnInit {
   cardDetails: SampleCardDetails[];
   sampleCardForm: FormGroup;
   editSampleCard: SampleCards;
+  date: Date;
+  serverDate: Date;
   ngOnInit() {
     this.editSampleCard = new SampleCards();
     this.items = [
@@ -86,6 +88,21 @@ export class SampleCardFormComponent implements OnInit {
   }
 
   onSubmit() {
-
+    console.log(this.serverDate);
+    const sampleCards = new SampleCards(
+      this.sampleCardForm.value['picks'],
+      this.sampleCardForm.value['repeats'],
+      this.sampleCardForm.value['width'],
+      this.sampleCardForm.value['length'],
+      this.sampleCardForm.value['ttl_picks'],
+      this.sampleCardForm.value['description'],
+      this.sampleCardForm.value['date'],
+      this.sampleCardForm.value['note'],
+      this.sampleCardForm.value['artwork_id'],
+      this.cardDetails
+    );
+    this.artworkDataService.store(sampleCards).subscribe(response => {
+      console.log(response);
+    });
   }
 }

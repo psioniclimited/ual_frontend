@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Artwork } from '../../_model/artwork';
 import { Observable } from 'rxjs';
 import { Paginate } from '../../_model/paginate';
+import {SampleCards} from '../../_model/sample-cards';
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +18,9 @@ export class ArtworkDataService {
       ? (params = params.set('reference_number', event.query.toLowerCase()))
       : (params = params);
     return this.http.get<Paginate>('/artwork_data', { params: params });
+  }
+
+  store(sampleCard: SampleCards) {
+    return this.http.post('/sample_card', sampleCard);
   }
 }

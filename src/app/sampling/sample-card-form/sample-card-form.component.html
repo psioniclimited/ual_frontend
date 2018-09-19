@@ -6,13 +6,13 @@
       <div class="">
         <label for="artwork_id">Reference No</label>
         <p-autoComplete
-          [(ngModel)]="editSampleCard.artwork_id"
           [suggestions]="artworks"
           (completeMethod)="filterArtwork($event)"
           (onSelect)="selectArtwork($event)"
-          field="reference_number" [size]="15"
+          field="reference_number"
+          id="artwork_id"
+          [size]="15"
           placeholder="Hint: type a reference number"
-          formControlName="artwork_id"
           [dropdown]="true"
           [minLength]="1">
         </p-autoComplete>
@@ -30,7 +30,7 @@
     <div class="ui-md-3 ui-g-3  form-group ">
       <div class="  ">
         <label for="file_name">File Name</label>
-        <a
+        <a id="file_name"
           *ngFor="let artwork_image of artworkImages"
           (click)="showArtworkImage(artwork_image.id)">
           {{artwork_image.filepath}}
@@ -45,7 +45,10 @@
                     id="combo"
                     name="combo"
                     [style]="{'width':'100%'}"
-                    [showClear]="true">
+                    [showClear]="true"
+                    formControlName="combo_id"
+                    [ngModel]="editSampleCard.combo_id"
+                    >
           <ng-template let-item pTemplate="selectedItem">
             <span style="vertical-align:middle">{{item.label}}</span>
           </ng-template>

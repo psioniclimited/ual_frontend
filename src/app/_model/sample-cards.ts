@@ -9,7 +9,7 @@ export class SampleCards {
   description: string;
   date: string;
   note: string;
-  artwork_id: string;
+  combo_id: string;
   sampleCardDetails: SampleCardDetails[];
   constructor(
     picks: string = '',
@@ -20,7 +20,7 @@ export class SampleCards {
     description: string = '',
     date: string = '',
     note: string = '',
-    artwork_id: string = '',
+    combo_id: string = '',
     sampleCardDetails: SampleCardDetails[] = []
   ) {
     this.picks = picks;
@@ -31,7 +31,7 @@ export class SampleCards {
     this.description = description;
     this.date = date;
     this.note = note;
-    this.artwork_id = artwork_id;
+    this.combo_id = combo_id;
     this.sampleCardDetails = sampleCardDetails;
   }
 }

@@ -54,7 +54,7 @@ export class SampleCardFormComponent implements OnInit {
 
   initForm() {
     this.sampleCardForm = new FormGroup({
-      artwork_id: new FormControl(null),
+      combo_id: new FormControl(null),
       picks: new FormControl(null),
       repeats: new FormControl(null),
       width: new FormControl(null),
@@ -88,7 +88,6 @@ export class SampleCardFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.serverDate);
     const sampleCards = new SampleCards(
       this.sampleCardForm.value['picks'],
       this.sampleCardForm.value['repeats'],
@@ -98,11 +97,12 @@ export class SampleCardFormComponent implements OnInit {
       this.sampleCardForm.value['description'],
       this.sampleCardForm.value['date'],
       this.sampleCardForm.value['note'],
-      this.sampleCardForm.value['artwork_id'],
+      this.sampleCardForm.value['combo_id'],
       this.cardDetails
     );
-    this.artworkDataService.store(sampleCards).subscribe(response => {
-      console.log(response);
-    });
+    console.log(this.sampleCardForm.value['combo_id'].id);
+    // this.artworkDataService.store(sampleCards).subscribe(response => {
+    //   console.log(response);
+    // });
   }
 }

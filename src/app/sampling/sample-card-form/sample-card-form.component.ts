@@ -97,12 +97,12 @@ export class SampleCardFormComponent implements OnInit {
       this.sampleCardForm.value['description'],
       this.sampleCardForm.value['date'],
       this.sampleCardForm.value['note'],
-      this.sampleCardForm.value['combo_id'],
+      this.sampleCardForm.value['combo_id'].id,
       this.cardDetails
     );
-    console.log(this.sampleCardForm.value['combo_id'].id);
-    // this.artworkDataService.store(sampleCards).subscribe(response => {
-    //   console.log(response);
-    // });
+    // console.log(this.sampleCardForm.value['combo_id'].id);
+    this.artworkDataService.store(sampleCards).subscribe(response => {
+      console.log(response);
+    });
   }
 }

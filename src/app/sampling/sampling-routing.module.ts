@@ -4,9 +4,17 @@ import { ArtworkFormComponent } from './artwork-form/artwork-form.component';
 import { SampleCardFormComponent } from './sample-card-form/sample-card-form.component';
 import { ArtworkListComponent } from './artwork-list/artwork-list.component';
 import { ArtworkComponent } from './artwork/artwork.component';
+import {SampleCardComponent} from './sample-card/sample-card.component';
 
 const routes: Routes = [
-  { path: 'sample-card/create', component: SampleCardFormComponent },
+  {
+    path: 'sample-card',
+    component: SampleCardComponent,
+    children: [
+      { path: 'create', component: SampleCardFormComponent },
+      { path: ':id/edit', component: SampleCardFormComponent }
+    ]
+  },
   {
     path: 'artwork',
     component: ArtworkComponent,

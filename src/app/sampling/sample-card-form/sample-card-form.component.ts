@@ -5,6 +5,7 @@ import { ArtworkDataService } from '../service/artwork-data.service';
 import { environment } from '../../../environments/environment';
 import { SampleCardDetails } from '../../_model/sample-card-details';
 import {SampleCards} from '../../_model/sample-cards';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 
 @Component({
   selector: 'app-sample-card-form',
@@ -12,11 +13,14 @@ import {SampleCards} from '../../_model/sample-cards';
   styleUrls: ['./sample-card-form.component.scss']
 })
 export class SampleCardFormComponent implements OnInit {
+  id: number;
   items: MenuItem[];
   clientName = '';
   combos: any[];
   artworkImageUrl: string;
-  constructor(private artworkDataService: ArtworkDataService) {}
+  constructor(private artworkDataService: ArtworkDataService,
+              private route: ActivatedRoute,
+              private router: Router) {}
   artworks: any[];
   artworkImages: any[];
   cols: any[];
@@ -49,6 +53,10 @@ export class SampleCardFormComponent implements OnInit {
       new SampleCardDetails('6', '', '', ''),
       new SampleCardDetails('7', '', '', '')
     ];
+    this.route.params.subscribe((params: Params) => {
+      this.id = +params['id'];
+      console.log(this.id);
+    });
     this.initForm();
   }
 

@@ -26,6 +26,7 @@ import { GrowlModule } from 'primeng/growl';
 import { ArtworkImageTableComponent } from './artwork-form/artwork-image-table/artwork-image-table.component';
 import {SampleCardDetailComponent} from './sample-card-form/sample-card-detail/sample-card-detail.component';
 import { SampleCardComponent } from './sample-card/sample-card.component';
+import { SampleCardListComponent } from './sample-card-list/sample-card-list.component';
 
 @NgModule({
   imports: [
@@ -57,7 +58,8 @@ import { SampleCardComponent } from './sample-card/sample-card.component';
     ArtworkComponent,
     ArtworkImageTableComponent,
     SampleCardDetailComponent,
-    SampleCardComponent
+    SampleCardComponent,
+    SampleCardListComponent
   ]
 })
 export class SamplingModule {}

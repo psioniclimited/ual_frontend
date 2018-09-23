@@ -5,12 +5,14 @@ import { SampleCardFormComponent } from './sample-card-form/sample-card-form.com
 import { ArtworkListComponent } from './artwork-list/artwork-list.component';
 import { ArtworkComponent } from './artwork/artwork.component';
 import {SampleCardComponent} from './sample-card/sample-card.component';
+import {SampleCardListComponent} from './sample-card-list/sample-card-list.component';
 
 const routes: Routes = [
   {
     path: 'sample-card',
     component: SampleCardComponent,
     children: [
+      { path: '', component: SampleCardListComponent },
       { path: 'create', component: SampleCardFormComponent },
       { path: ':id/edit', component: SampleCardFormComponent }
     ]

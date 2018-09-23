@@ -17,6 +17,7 @@ export class SampleCardFormComponent implements OnInit {
   clientName = '';
   combos: any[];
   artworkImageUrl: string;
+  artwork_id: string;
   beams: any[];
   cuts: any[];
   constructor(
@@ -88,6 +89,7 @@ export class SampleCardFormComponent implements OnInit {
       beam: new FormControl(null, Validators.required),
       cut_id: new FormControl(null, Validators.required),
       filename: new FormControl(null, Validators.required),
+      artwork_id: new FormControl(null, Validators.required),
       sampleCardDetails: new FormControl(null)
     });
   }
@@ -104,6 +106,7 @@ export class SampleCardFormComponent implements OnInit {
   }
 
   selectArtwork(event) {
+    this.artwork_id = event.id;
     this.clientName = event.client_name;
     this.combos = event.combos;
   }
@@ -122,6 +125,7 @@ export class SampleCardFormComponent implements OnInit {
       this.sampleCardForm.value['beam'].value,
       this.sampleCardForm.value['cut_id'].value,
       this.sampleCardForm.value['filename'],
+      this.artwork_id,
       this.cardDetails
     );
     console.log(sampleCards);

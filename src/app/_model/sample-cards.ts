@@ -10,6 +10,9 @@ export class SampleCards {
   date: string;
   note: string;
   combo_id: string;
+  beam: string;
+  cut_id: string;
+  filename: string;
   sampleCardDetails: SampleCardDetails[];
   constructor(
     picks: string = '',
@@ -21,6 +24,9 @@ export class SampleCards {
     date: string = '',
     note: string = '',
     combo_id: string = '',
+    beam: string = '',
+    cut_id: string = '',
+    filename: string = '',
     sampleCardDetails: SampleCardDetails[] = []
   ) {
     this.picks = picks;
@@ -32,6 +38,9 @@ export class SampleCards {
     this.date = date;
     this.note = note;
     this.combo_id = combo_id;
+    this.beam = beam;
+    this.cut_id = cut_id;
+    this.filename = filename;
     this.sampleCardDetails = sampleCardDetails;
   }
 }

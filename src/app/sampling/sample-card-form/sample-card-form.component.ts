@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MenuItem } from 'primeng/api';
 import { ArtworkDataService } from '../service/artwork-data.service';
-import { environment } from '../../../environments/environment';
 import { SampleCardDetails } from '../../_model/sample-card-details';
-import {SampleCards} from '../../_model/sample-cards';
-import {ActivatedRoute, Params, Router} from '@angular/router';
+import { SampleCards } from '../../_model/sample-cards';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-sample-card-form',
@@ -18,11 +17,14 @@ export class SampleCardFormComponent implements OnInit {
   clientName = '';
   combos: any[];
   artworkImageUrl: string;
-  constructor(private artworkDataService: ArtworkDataService,
-              private route: ActivatedRoute,
-              private router: Router) {}
+  beams: any[];
+  cuts: any[];
+  constructor(
+    private artworkDataService: ArtworkDataService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
   artworks: any[];
-  artworkImages: any[];
   cols: any[];
   cardDetails: SampleCardDetails[];
   sampleCardForm: FormGroup;
@@ -31,6 +33,18 @@ export class SampleCardFormComponent implements OnInit {
   serverDate: Date;
   ngOnInit() {
     this.editSampleCard = new SampleCards();
+    this.beams = [
+      {name: 'Black', value: 0},
+      {name: 'White', value: 1},
+    ];
+    this.cuts = [
+      {name: 'MUSONIC', value: 1},
+      {name: 'STRAIGHT CUT', value: 2},
+      {name: 'END FOLD', value: 3},
+      {name: 'CENTER FOLD', value: 4},
+      {name: 'DIAGONAL CUT', value: 5},
+      {name: 'BOOK FOLD', value: 6},
+    ];
     this.items = [
       {
         label: 'Woven Label',
@@ -71,6 +85,9 @@ export class SampleCardFormComponent implements OnInit {
       description: new FormControl(null, Validators.required),
       date: new FormControl(null, Validators.required),
       note: new FormControl(null, Validators.required),
+      beam: new FormControl(null, Validators.required),
+      cut_id: new FormControl(null, Validators.required),
+      filename: new FormControl(null, Validators.required),
       sampleCardDetails: new FormControl(null)
     });
   }
@@ -89,10 +106,6 @@ export class SampleCardFormComponent implements OnInit {
   selectArtwork(event) {
     this.clientName = event.client_name;
     this.combos = event.combos;
-    this.artworkImages = event.artwork_images;
-  }
-  showArtworkImage(id: number) {
-    this.artworkImageUrl = environment.api_url + '/artwork_image/' + id;
   }
 
   onSubmit() {
@@ -106,9 +119,12 @@ export class SampleCardFormComponent implements OnInit {
       this.sampleCardForm.value['date'],
       this.sampleCardForm.value['note'],
       this.sampleCardForm.value['combo_id'].id,
+      this.sampleCardForm.value['beam'].value,
+      this.sampleCardForm.value['cut_id'].value,
+      this.sampleCardForm.value['filename'],
       this.cardDetails
     );
-    // console.log(this.sampleCardForm.value['combo_id'].id);
+    console.log(sampleCards);
     this.artworkDataService.store(sampleCards).subscribe(response => {
       console.log(response);
     });

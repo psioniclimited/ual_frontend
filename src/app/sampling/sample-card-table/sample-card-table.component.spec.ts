@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SampleCardListComponent } from './sample-card-list.component';
+import { SampleCardTableComponent } from './sample-card-table.component';
 
-describe('SampleCardListComponent', () => {
-  let component: SampleCardListComponent;
-  let fixture: ComponentFixture<SampleCardListComponent>;
+describe('SampleCardTableComponent', () => {
+  let component: SampleCardTableComponent;
+  let fixture: ComponentFixture<SampleCardTableComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SampleCardListComponent ]
+      declarations: [ SampleCardTableComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SampleCardListComponent);
+    fixture = TestBed.createComponent(SampleCardTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

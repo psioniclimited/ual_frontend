@@ -67,6 +67,9 @@
                pInputText placeholder="Enter picks"
                name="combo" formControlName="picks" [ngModel]="editSampleCard.picks">
       </div>
+      <small *ngIf="!sampleCardForm.controls['picks'].valid && sampleCardForm.controls['picks'].touched">
+        Picks is required
+      </small>
     </div>
     <div class="ui-md-2 ui-g-2 form-group ">
       <div class="  ">
@@ -75,6 +78,9 @@
                pInputText placeholder="Enter repeats"
                name="repeats" formControlName="repeats" [ngModel]="editSampleCard.repeats">
       </div>
+      <small *ngIf="!sampleCardForm.controls['repeats'].valid && sampleCardForm.controls['repeats'].touched">
+        Repeats is required
+      </small>
     </div>
     <div class="ui-md-3 ui-g-3 form-group ">
       <div class="  ">
@@ -83,6 +89,9 @@
                pInputText placeholder="Enter width"
                name="width" formControlName="width" [ngModel]="editSampleCard.width">
       </div>
+      <small *ngIf="!sampleCardForm.controls['width'].valid && sampleCardForm.controls['width'].touched">
+        Width is required
+      </small>
     </div>
     <div class="ui-md-3 ui-g-3 form-group ">
       <div class="  ">
@@ -91,6 +100,9 @@
                pInputText placeholder="Enter length"
                name="length" formControlName="length" [ngModel]="editSampleCard.length">
       </div>
+      <small *ngIf="!sampleCardForm.controls['length'].valid && sampleCardForm.controls['length'].touched">
+        Length is required
+      </small>
     </div>
     <div class="ui-md-2 ui-g-2 form-group ">
       <div class="  ">
@@ -99,6 +111,9 @@
                pInputText placeholder="Enter TTL picks"
                name="ttl_picks" formControlName="ttl_picks" [ngModel]="editSampleCard.ttl_picks">
       </div>
+      <small *ngIf="!sampleCardForm.controls['ttl_picks'].valid && sampleCardForm.controls['ttl_picks'].touched">
+        TTL Picks is required
+      </small>
     </div>
     <div class="ui-md-9 ui-g-9 form-group ">
       <div class="  ">
@@ -112,6 +127,9 @@
                formControlName="description"
                [ngModel]="editSampleCard.description">
       </div>
+      <small *ngIf="!sampleCardForm.controls['description'].valid && sampleCardForm.controls['description'].touched">
+        Description is required
+      </small>
     </div>
     <div class="ui-md-3 ui-g-3 form-group ">
       <div class="  ">
@@ -124,6 +142,9 @@
                     name="date"
                     formControlName="date"></p-calendar>
       </div>
+      <small *ngIf="!sampleCardForm.controls['date'].valid && sampleCardForm.controls['date'].touched">
+        Date is required
+      </small>
     </div>
 
     <app-sample-card-detail

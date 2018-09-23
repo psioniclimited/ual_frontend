@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import { MenuItem } from 'primeng/api';
 import { ArtworkDataService } from '../service/artwork-data.service';
 import { environment } from '../../../environments/environment';
@@ -41,28 +41,28 @@ export class SampleCardFormComponent implements OnInit {
       { field: 'dan', header: 'DAN' }
     ];
     this.cardDetails = [
-      new SampleCardDetails('1', '#fff', 'art', 'testing'),
-      new SampleCardDetails('2', '#fff', 'art', 'testing'),
-      new SampleCardDetails('3', '#fff', 'art', 'testing'),
-      new SampleCardDetails('4', '#fff', 'art', 'testing'),
-      new SampleCardDetails('5', '#fff', 'art', 'testing'),
-      new SampleCardDetails('6', '#fff', 'art', 'testing'),
-      new SampleCardDetails('7', '#fff', 'art', 'testing')
+      new SampleCardDetails('1', '', '', ''),
+      new SampleCardDetails('2', '', '', ''),
+      new SampleCardDetails('3', '', '', ''),
+      new SampleCardDetails('4', '', '', ''),
+      new SampleCardDetails('5', '', '', ''),
+      new SampleCardDetails('6', '', '', ''),
+      new SampleCardDetails('7', '', '', '')
     ];
     this.initForm();
   }
 
   initForm() {
     this.sampleCardForm = new FormGroup({
-      combo_id: new FormControl(null),
-      picks: new FormControl(null),
-      repeats: new FormControl(null),
-      width: new FormControl(null),
-      length: new FormControl(null),
-      ttl_picks: new FormControl(null),
-      description: new FormControl(null),
-      date: new FormControl(null),
-      note: new FormControl(null),
+      combo_id: new FormControl(null, Validators.required),
+      picks: new FormControl(null, Validators.required),
+      repeats: new FormControl(null, Validators.required),
+      width: new FormControl(null, Validators.required),
+      length: new FormControl(null, Validators.required),
+      ttl_picks: new FormControl(null, Validators.required),
+      description: new FormControl(null, Validators.required),
+      date: new FormControl(null, Validators.required),
+      note: new FormControl(null, Validators.required),
       sampleCardDetails: new FormControl(null)
     });
   }

@@ -138,8 +138,11 @@
                pInputText placeholder="Enter note"
                name="note" formControlName="note" [ngModel]="editSampleCard.note">
       </div>
+      <small *ngIf="!sampleCardForm.controls['note'].valid && sampleCardForm.controls['note'].touched">
+        Note is required
+      </small>
     </div>
-    <button class="submit-color" name="basic" pButton type="submit" label="Submit"></button>
+    <button class="submit-color" name="basic" pButton type="submit" label="Submit" [disabled]="!sampleCardForm.valid"></button>
 
   </form>
   <p-dialog header="Artwork Image" [(visible)]="artworkImageUrl">

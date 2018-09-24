@@ -30,15 +30,15 @@ export class RoleTableComponent implements OnInit {
   }
 
   // loadUsersLazy(event: LazyLoadEvent) {
-  //   this.permissionService.artworkList(event).subscribe(artworkList => {
-  //     this.totalRecords = artworkList.total;
-  //     this.artworkList = artworkList.data;
+  //   this.permissionService.sampleCardList(event).subscribe(sampleCardList => {
+  //     this.totalRecords = sampleCardList.total;
+  //     this.sampleCardList = sampleCardList.data;
   //     this.loading = false;
   //   });
   // }
   //
   // editArtwork(id: number) {
-  //   this.router.navigate(['../artworkList/', id , 'edit'], {relativeTo: this.route});
+  //   this.router.navigate(['../sampleCardList/', id , 'edit'], {relativeTo: this.route});
   // }
 
 }

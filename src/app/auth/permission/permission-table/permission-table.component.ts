@@ -2,10 +2,8 @@ import {
   Component,
   OnDestroy,
   OnInit,
-  ViewChild,
   ViewChildren
 } from '@angular/core';
-import { UserService } from '../../service/user.service';
 import { Paginate } from '../../../_model/paginate';
 import { LazyLoadEvent } from 'primeng/api';
 import { PermissionService } from '../../service/permission.service';
@@ -62,7 +60,7 @@ export class PermissionTableComponent implements OnInit, OnDestroy {
   }
 
   editPermission(id: number) {
-    this.router.navigate(['../artworkList/', id, 'edit'], {
+    this.router.navigate(['../sampleCardList/', id, 'edit'], {
       relativeTo: this.route
     });
   }

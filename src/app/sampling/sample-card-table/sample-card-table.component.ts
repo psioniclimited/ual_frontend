@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewChildren} from '@angular/core';
 import {Paginate} from '../../_model/paginate';
 import {LazyLoadEvent} from 'primeng/api';
+import {SampleCardService} from '../service/sample-card.service';
 
 @Component({
   selector: 'app-sample-card-table',
@@ -14,7 +15,7 @@ export class SampleCardTableComponent implements OnInit {
   totalRecords: number;
   cols: any[];
   loading: boolean;
-  constructor() { }
+  constructor(private sampleCardService: SampleCardService) { }
 
   ngOnInit() {
     this.cols = [
@@ -36,6 +37,12 @@ export class SampleCardTableComponent implements OnInit {
   }
 
   loadArtworks(event: LazyLoadEvent) {
+    this.sampleCardService.index(event).subscribe(artworks => {
+      this.totalRecords = artworks.total;
+      this.sampleCardList = artworks.data;
+      this.loading = false;
+      console.log(this.sampleCardList);
+    });
   }
 
 }

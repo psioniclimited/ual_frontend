@@ -31,25 +31,43 @@
     <ng-template pTemplate="body" let-rowData let-columns="columns">
       <tr>
         <td>
-          {{rowData.position.artwork.date}}
+          {{rowData.artwork.description}}
         </td>
         <td>
-          {{rowData.position.artwork.client_name}}
+          {{rowData.artwork.reference_number}}
         </td>
         <td>
-          {{rowData.position.artwork.reference_number}}
-        </td>
-        <td>
-          {{ rowData.position.artwork.division.name }}
-        </td>
-        <td>
-          {{rowData.position.artwork.description}}
-        </td>
-        <td>
-          {{rowData.name}}
+          {{rowData.combo.name}}
         </td>
         <td>
 
+        </td>
+        <td>
+
+        </td>
+        <td>
+          {{rowData.artwork.division.name}}
+        </td>
+        <td>
+
+        </td>
+        <td>
+          {{rowData.description}}
+        </td>
+        <td>
+
+        </td>
+        <td>
+
+        </td>
+        <td>
+
+        </td>
+        <td>
+
+        </td>
+        <td>
+          {{rowData.date}}
         </td>
         <td>
           <button class="submit-color" name="basic" pButton type="button"  label="Edit"></button>
